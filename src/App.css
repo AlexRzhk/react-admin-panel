@@ -1,39 +1,38 @@
-.App {
-  text-align: center;
+:root {
+  --font-color: #000000;
+  --background-color: #ffffff;
+  --main-elements-color: #459df5;
+  --dim-elements-color: #bad8f5;
+  --warning-color: #f53152;
+  --additional-filter-background: #ebf0f5;
+  --background-color-white: #ffffff;
+  --background-color-day-light-blue: #bad8f5;
+  --background-color-blue: #459df5;
+  --background-color-light-blue: #85b7ee;
 }
 
-.App-logo {
-  height: 40vmin;
-
-  pointer-events: none;
+body {
+  color: var(--font-color);
+  background-color: var(--background-color);
+  font-family: "Ubuntu", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pageWrapper {
+  padding: 2rem 3rem 0 3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem;
+  height: calc(100vh - 2rem);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark {
+  --font-color: #bcc4cc;
+  --background-color: #2b2d33;
+  --main-elements-color: #459df5;
+  --dim-elements-color: #454e52;
+  --additional-filter-background: #171b1f;
+  --background-color-white: #454e52;
+  --background-color-day-light-blue: #bad8f5;
+  --background-color-blue: #459df5;
+  --background-color-light-blue: #85b7ee;
 }

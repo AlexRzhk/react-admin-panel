@@ -1,0 +1,15 @@
+._ {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchbarWrapper {
+  width: 20rem;
+}
+
+.leftBlock {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

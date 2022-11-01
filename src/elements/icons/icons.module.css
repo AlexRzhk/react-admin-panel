@@ -1,0 +1,13 @@
+._ {
+  width: 1rem;
+}
+
+.search {
+  fill: var(--main-elements-color);
+  stroke: var(--main-elements-color);
+}
+
+.X {
+  fill: var(--dim-elements-color);
+  stroke: var(--dim-elements-color);
+}
