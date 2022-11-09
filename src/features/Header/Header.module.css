@@ -1,0 +1,19 @@
+._ {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.dropdownWrapper {
+  position: absolute;
+  top: 2.25rem;
+  right: 0;
+}
+
+.text {
+  font-size: 26px;
+}
