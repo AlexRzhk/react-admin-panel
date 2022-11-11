@@ -12,12 +12,12 @@ import { ReactComponent as Sun } from "./assets/sun.svg";
 import { ReactComponent as Arrow } from "./assets/v_arrow.svg";
 import { ReactComponent as X_large } from "./assets/x-large.svg";
 import { ReactComponent as X_medium } from "./assets/x-medium.svg";
-import styles from "./icons.module.css";
+import styles from "./Icon.module.css";
 
 import { string } from "prop-types";
 
 Icon.propTypes = {
-  type: { string },
+  type: string,
 };
 
 export function Icon({ type }) {
@@ -41,14 +41,14 @@ export function Icon({ type }) {
     case "refresh":
       return <Refresh width="1rem" />;
     case "search":
-      return <Search className={styles["_"] + " " + styles["search"]} />;
+      return <Search className={styles._ + " " + styles.search} />;
     case "sun":
       return <Sun width="1rem" />;
     case "arrow":
       return <Arrow width="1rem" />;
     case "x-large":
-      return <X_large className={styles["_"] + " " + styles["X"]} />;
+      return <X_large className={styles._ + " " + styles.x} />;
     case "x-medium":
-      return <X_medium className={styles["_"] + " " + styles["X"]} />;
+      return <X_medium className={styles._ + " " + styles.x} />;
   }
 }

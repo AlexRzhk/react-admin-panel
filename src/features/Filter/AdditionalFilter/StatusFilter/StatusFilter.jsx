@@ -1,48 +1,36 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styles from "./StatusFilter.module.css";
-import { classNames, split } from "../../../../utils/classnames";
+import cn from "classnames";
+import statusSelectorStyles from "./StatusesSelector/StatusesSelector.module.css";
 
-import { string, boolean, func, object } from "prop-types";
+import { string, bool, func, object } from "prop-types";
 import { Input } from "../../../../elements/Input/Input";
 import { Button } from "../../../../elements/Button/Button";
-import { StatusesSelector } from "../../../../elements/Dropdown/StatusesSelector/StatusesSelector";
+import { StatusesSelector } from "./StatusesSelector/StatusesSelector";
+import { FiltersContext } from "../../../../App";
+import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
 StatusFilterContainer.propTypes = {
-  className: { string },
+  className: string,
 };
 StatusFilter.propTypes = {
-  className: { string },
-  isDropdownVisible: { boolean },
-  switchVisibilityHandler: { func },
-  handleChangeStatusValues: { func },
-  statusValues: { object },
-  checkedValues: { string },
+  className: string,
+  isDropdownVisible: bool,
+  switchVisibilityHandler: func,
+  handleChangeStatusValues: func,
+  statusValues: object,
+  checkedValues: string,
 };
 
 export function StatusFilterContainer({ className }) {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [statusValues, setStatusValues] = useState({
-    Новый: false,
-    Рассчет: false,
-    Подтвержден: false,
-    Отложен: false,
-    Выполнен: false,
-    Отменен: false,
-  });
+  let { filterOfStatuses, handleChangeStatusChoose } =
+    useContext(FiltersContext);
 
-  const handleChangeStatusValues = (el) => {
-    setStatusValues({ ...statusValues, [el]: !statusValues[el] });
-  };
-
-  const switchVisibilityHandler = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
-
-  let checkedValues = Object.keys(statusValues).filter(
-    (el) => statusValues[el]
+  let checkedValues = Object.keys(filterOfStatuses).filter(
+    (el) => filterOfStatuses[el]
   );
   if (
     checkedValues.length === 0 ||
-    checkedValues.length === Object.keys(statusValues).length
+    checkedValues.length === Object.keys(filterOfStatuses).length
   ) {
     checkedValues = "Любой";
   } else {
@@ -52,10 +40,8 @@ export function StatusFilterContainer({ className }) {
   return (
     <StatusFilter
       className={className}
-      isDropdownVisible={isDropdownVisible}
-      switchVisibilityHandler={switchVisibilityHandler}
-      statusValues={statusValues}
-      handleChangeStatusValues={handleChangeStatusValues}
+      statusValues={filterOfStatuses}
+      handleChangeStatusValues={handleChangeStatusChoose}
       checkedValues={checkedValues}
     />
   );
@@ -63,45 +49,40 @@ export function StatusFilterContainer({ className }) {
 
 function StatusFilter({
   className,
-  isDropdownVisible,
-  switchVisibilityHandler,
   handleChangeStatusValues,
   statusValues,
   checkedValues,
 }) {
-  let StatusFilterStyles = styles["_"];
-  if (className) {
-    StatusFilterStyles += classNames(split(className));
-  }
-  let ButtonStyles = styles["button"] + " " + styles["theme-icon"];
-  if (isDropdownVisible) {
-    ButtonStyles += " " + styles["flipped"];
-  }
+  let statusFilterStyles = cn(styles._, className);
+  let buttonStyles = cn(styles.button, styles.themeIcon);
+
+  const toggleElement = <Button icon="arrow" className={buttonStyles} />;
+
+  const dropdownElement = (
+    <MyDropdown
+      trigger={toggleElement}
+      childrenClassName={cn(
+        statusSelectorStyles._,
+        statusSelectorStyles.wrapper
+      )}
+      triggerClassNameWithActiveTrigger={styles.flipped}
+    >
+      <StatusesSelector
+        statusValues={statusValues}
+        handleChangeStatusValues={handleChangeStatusValues}
+      />
+    </MyDropdown>
+  );
 
   return (
-    <div className={StatusFilterStyles}>
+    <div className={statusFilterStyles}>
       <Input
         value={checkedValues}
         readOnly
         label="Статус заказа"
-        postfix={
-          <Button
-            className={ButtonStyles}
-            icon="arrow"
-            onClick={switchVisibilityHandler}
-          />
-        }
+        postfix={dropdownElement}
       />
-      <div>
-        {isDropdownVisible && (
-          <div className={styles["dropdownWrapper"]}>
-            <StatusesSelector
-              statusValues={statusValues}
-              handleChangeStatusValues={handleChangeStatusValues}
-            />
-          </div>
-        )}
-      </div>
+      <div></div>
     </div>
   );
 }

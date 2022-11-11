@@ -2,11 +2,11 @@ import styles from "./Radio.module.css";
 
 export function Radio() {
   return (
-    <div className={styles["_"]}>
+    <div className={styles._}>
       <label>
-        <input className={styles["area"]} type="radio" />
+        <input className={styles.area} type="radio" />
         <svg
-          className={styles["icon"]}
+          className={styles.icon}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >

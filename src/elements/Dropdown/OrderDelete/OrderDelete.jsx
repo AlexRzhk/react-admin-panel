@@ -3,8 +3,8 @@ import styles from "./OrderDelete.module.css";
 import { func } from "prop-types";
 
 OrderDelete.propTypes = {
-  dropdownVisibilityHandler: { func },
-  removeHandler: { func },
+  dropdownVisibilityHandler: func,
+  removeHandler: func,
 };
 
 let noop = () => {};
@@ -14,8 +14,8 @@ export function OrderDelete({
   removeHandler = noop,
 }) {
   return (
-    <div className={styles["_"]}>
-      <span className={styles["title"]}>Удалить n записей?</span>
+    <div className={styles._}>
+      <span className={styles.title}>Удалить n записей?</span>
       <Button isFullWidth isShort onClick={removeHandler}>
         Удалить
       </Button>

@@ -1,20 +1,20 @@
 import styles from "./Input.module.css";
 import { Button } from "../Button/Button";
-import { classNames, split } from "../../utils/classnames.js";
+import cn from "classnames";
 
-import { func, string, boolean } from "prop-types";
+import { func, string, bool, any } from "prop-types";
 Input.propTypes = {
-  value: { string },
-  onChange: { func },
-  resetValue: { func },
-  isIncorrect: { boolean },
-  disabled: { boolean },
-  label: { string },
-  placeholder: { string },
-  prefix: { string },
-  postfix: { string },
-  className: { string },
-  readOnly: { boolean },
+  value: string,
+  onChange: func,
+  onReset: func,
+  isIncorrect: bool,
+  disabled: bool,
+  label: string,
+  placeholder: string,
+  prefix: any,
+  postfix: any,
+  className: string,
+  readOnly: bool,
 };
 
 const noop = () => {};
@@ -22,7 +22,7 @@ const noop = () => {};
 export function Input({
   value = "",
   onChange = noop,
-  resetValue = noop,
+  onReset = noop,
   isIncorrect = false,
   disabled = false,
   label,
@@ -35,38 +35,34 @@ export function Input({
   if (disabled && isIncorrect) {
     isIncorrect = false;
   }
-  let posfixElement;
+  let postfixElement;
   if (postfix) {
-    posfixElement = postfix;
+    postfixElement = postfix;
   } else if (disabled) {
-    posfixElement = <Button disabled icon="locked" />;
+    postfixElement = <Button disabled icon="locked" />;
   } else if (value) {
-    posfixElement = <Button isShort icon="x-medium" onClick={resetValue} />;
+    postfixElement = <Button isShort icon="x-medium" onClick={onReset} />;
   }
-  let componentStyles = styles["_"];
-  if (className) {
-    componentStyles += classNames({ ...split(className) });
-  }
-  componentStyles += classNames(
-    { incorrect: isIncorrect, disabled: disabled },
-    styles
-  );
+  let componentStyles = cn(styles._, className, {
+    [styles.incorrect]: isIncorrect,
+    [styles.disabled]: disabled,
+  });
 
   return (
     <div className={componentStyles}>
-      <label className={styles["label"]}>
+      <label className={styles.label}>
         {label}
-        <div className={styles["wrapper"]}>
+        <div className={styles.wrapper}>
           {prefix && <span>{prefix}</span>}
           <input
-            className={styles["area"]}
+            className={styles.area}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
             disabled={!!disabled}
             readOnly={!!readOnly}
           />
-          {posfixElement}
+          {postfixElement}
         </div>
       </label>
     </div>

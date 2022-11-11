@@ -1,8 +1,9 @@
 import styles from "./PageSelector.module.css";
 import { Input } from "../../Input/Input";
+import cn from "classnames";
 
 export function PageSelector() {
-  let PageSelectorClassName = styles._ + " " + styles["page-number-choose"];
+  let PageSelectorClassName = cn(styles._, styles["page-number-choose"]);
 
   return (
     <div className={PageSelectorClassName}>

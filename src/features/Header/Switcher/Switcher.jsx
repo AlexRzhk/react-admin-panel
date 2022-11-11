@@ -1,11 +1,11 @@
-import { Button } from "../../Button/Button.jsx";
+import { Button } from "../../../elements/Button/Button.jsx";
 import styles from "./Switcher.module.css";
-import { classNames, split } from "../../../utils/classnames.js";
+import cn from "classnames";
 import { func, string } from "prop-types";
 Switcher.propTypes = {
-  currentTheme: { string },
-  changeTheme: { func },
-  className: { string },
+  currentTheme: string,
+  changeTheme: func,
+  className: string,
 };
 
 const noop = () => {};
@@ -17,10 +17,7 @@ export function Switcher({
 }) {
   const changeToLightThemeHandler = () => changeTheme("light");
   const changeToDarkThemeHandler = () => changeTheme("dark");
-  let SwitcherClasses = styles["_"] + " " + styles["chooseTheme"];
-  if (className) {
-    SwitcherClasses = classNames({ ...split(className) });
-  }
+  let SwitcherClasses = cn(styles._, styles.chooseTheme, className);
 
   return (
     <div className={SwitcherClasses}>

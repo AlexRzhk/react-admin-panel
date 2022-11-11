@@ -1,25 +1,26 @@
 import { Button } from "../../elements/Button/Button";
 import styles from "./Header.module.css";
-import { classNames, split } from "../../utils/classnames.js";
-import { Switcher } from "../../elements/Dropdown/Switcher/Switcher";
-import { useSelector, useDispatch } from "react-redux";
-import { changeTheme, LIGHT_THEME } from "../../store/slices/themeSlice";
-import { changeFilterVisibility } from "../../store/slices/filterVisibilitySlice";
+import { Switcher } from "./Switcher/Switcher";
+import { useEffect, useState } from "react";
+import cn from "classnames";
+import switcherStyles from "./Switcher/Switcher.module.css";
+export const LIGHT_THEME = "light";
 
 import { string } from "prop-types";
+import { MyDropdown } from "../../elements/Dropdown/MyDropdown";
+
 Header.propTypes = {
-  className: { string },
+  className: string,
 };
 
 export function Header({ className }) {
-  const theme = useSelector((state) => state.theme.value);
-  const dropdownVisibility = useSelector(
-    (state) => state.filterVisibility.value
-  );
-  const dispatch = useDispatch();
+  const [theme, themeSetter] = useState(LIGHT_THEME);
 
-  function changeThemeWrapper(theme = LIGHT_THEME) {
-    dispatch(changeTheme());
+  function changeTheme(theme = LIGHT_THEME) {
+    themeSetter(theme);
+  }
+
+  function changeThemeApply(theme) {
     if (theme === LIGHT_THEME) {
       document.body.classList.remove("dark");
     } else {
@@ -27,28 +28,26 @@ export function Header({ className }) {
     }
   }
 
-  const visibilityHandler = () => {
-    dispatch(changeFilterVisibility());
-  };
+  useEffect(() => {
+    changeThemeApply(theme);
+  }, [theme]);
 
-  let componentStyles = styles["_"];
-  if (className) {
-    componentStyles += classNames(...split(className), styles);
-  }
+  let componentStyles = cn(styles._, className);
+
+  const toggleElement = (
+    <Button icon={theme === "light" ? "sun" : "moon"}>
+      {theme === LIGHT_THEME ? "Светлая тема" : "Темная тема"}
+    </Button>
+  );
+
   return (
     <header className={componentStyles}>
-      <div className={styles["text"]}>Список заказов</div>
-      <Button
-        icon={theme === LIGHT_THEME ? "sun" : "moon"}
-        onClick={visibilityHandler}
-      >
-        {theme === LIGHT_THEME ? "Светлая тема" : "Темная тема"}
-      </Button>
-      {dropdownVisibility && (
-        <div className={styles["dropdownWrapper"]}>
-          <Switcher currentTheme={theme} changeTheme={changeThemeWrapper} />
+      <div className={styles.text}>Список заказов</div>
+      <MyDropdown trigger={toggleElement} childrenClassName={switcherStyles._}>
+        <div className={styles.dropdownWrapper}>
+          <Switcher currentTheme={theme} changeTheme={changeTheme} />
         </div>
-      )}
+      </MyDropdown>
     </header>
   );
 }

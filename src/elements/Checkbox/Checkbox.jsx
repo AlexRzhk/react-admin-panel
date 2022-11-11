@@ -1,27 +1,27 @@
 import styles from "./Checkbox.module.css";
-import { boolean, func } from "prop-types";
+import { bool, func } from "prop-types";
 
 // ...
 
 Checkbox.propTypes = {
-  checked: { boolean },
-  onChange: { func },
+  checked: bool,
+  onChange: func,
 };
 
 let noop = () => {};
 
 export function Checkbox({ checked = false, onChange = noop }) {
   return (
-    <div className={styles["_"]}>
+    <div className={styles._}>
       <label>
         <input
-          className={styles["area"]}
+          className={styles.area}
           type="checkbox"
           checked={checked}
           onChange={onChange}
         />
         <svg
-          className={styles["icon"]}
+          className={styles.icon}
           viewBox="0 0 16 16"
           stroke="none"
           xmlns="http://www.w3.org/2000/svg"

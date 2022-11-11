@@ -15,7 +15,7 @@
   stroke: var(--main-elements-color);
 }
 
-.icon-only {
+.iconOnly {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -39,11 +39,11 @@
   gap: 0.25rem;
 }
 
-.short.icon-only {
+.short.iconOnly {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
-.full-width {
+.fullWidth {
   width: 100%;
 }

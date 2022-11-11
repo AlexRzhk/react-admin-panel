@@ -10,8 +10,9 @@
 
 .dropdownWrapper {
   position: absolute;
-  top: 2.25rem;
-  right: 0;
+  top: 0rem;
+  right: 0rem;
+  left: -1rem;
 }
 
 .text {

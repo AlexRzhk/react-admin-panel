@@ -1,16 +1,13 @@
 import styles from "./AdditionalFilter.module.css";
-import { classNames, split } from "../../../utils/classnames.js";
+import cn from "classnames";
 
-import { string } from "prop-types";
+import { string, node } from "prop-types";
 AdditionalFilter.propTypes = {
-  className: { string },
-  children: { string },
+  className: string,
+  children: node,
 };
 
 export function AdditionalFilter({ className, children }) {
-  let AdditionalFilterStyles = styles["_"];
-  if (className) {
-    AdditionalFilterStyles += classNames({ ...split(className) });
-  }
+  let AdditionalFilterStyles = cn(styles._, className);
   return <div className={AdditionalFilterStyles}>{children}</div>;
 }

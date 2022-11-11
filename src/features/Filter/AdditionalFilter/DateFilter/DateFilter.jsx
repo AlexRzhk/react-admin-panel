@@ -1,26 +1,42 @@
 import { Input } from "../../../../elements/Input/Input.jsx";
 import styles from "./DateFilter.module.css";
-import { classNames, split } from "../../../../utils/classnames";
+import cn from "classnames";
+import { useContext } from "react";
+import { FiltersContext } from "../../../../App";
 
 import { string } from "prop-types";
 DateFilter.propTypes = {
-  className: { string },
+  className: string,
 };
 
 export function DateFilter({ className }) {
-  let DateFilterStyles = styles["_"];
-  if (className) {
-    DateFilterStyles += classNames({ ...split(className) });
-  }
+  let {
+    filterDateFromValue,
+    handleChangeFilterDateFromValue,
+    handleResetFilterDateFromValue,
+    filterDateToValue,
+    handleChangeFilterDateToValue,
+    handleResetFilterDateToValue,
+  } = useContext(FiltersContext);
+
+  let DateFilterStyles = cn(styles._, className);
   return (
     <div className={DateFilterStyles}>
       <Input
-        value="20.01.2021"
+        value={filterDateFromValue}
         prefix="c"
         placeholder="dd.mm.yyyy"
         label="Дата оформления"
-      ></Input>
-      <Input prefix="по" placeholder="dd.mm.yyyy"></Input>
+        onChange={handleChangeFilterDateFromValue}
+        onReset={handleResetFilterDateFromValue}
+      />
+      <Input
+        value={filterDateToValue}
+        prefix="по"
+        placeholder="dd.mm.yyyy"
+        onChange={handleChangeFilterDateToValue}
+        onReset={handleResetFilterDateToValue}
+      />
     </div>
   );
 }
