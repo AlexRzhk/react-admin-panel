@@ -20,28 +20,50 @@ StatusFilter.propTypes = {
   statusValues: object,
   checkedValues: string,
 };
+export const statuses = {
+  new: false,
+  calculating: false,
+  confirm: false,
+  postponed: false,
+  done: false,
+  canceled: false,
+};
+export const statusNames = {
+  new: "Новый",
+  calculating: "Рассчет",
+  confirm: "Подтвержден",
+  postponed: "Отложен",
+  done: "Выполнен",
+  canceled: "Отменен",
+};
 
 export function StatusFilterContainer({ className }) {
-  let { filterOfStatuses, handleChangeStatusChoose } =
-    useContext(FiltersContext);
+  const { handleChangeStatusChoose } = useContext(FiltersContext);
 
-  let checkedValues = Object.keys(filterOfStatuses).filter(
-    (el) => filterOfStatuses[el]
-  );
+  const statusChangeHandler = (status) => {
+    handleChangeStatusChoose(status);
+    statuses[status] = !statuses[status];
+  };
+
+  let checkedValues = Object.keys(statuses).filter((el) => statuses[el]);
   if (
     checkedValues.length === 0 ||
-    checkedValues.length === Object.keys(filterOfStatuses).length
+    checkedValues.length === Object.keys(statuses).length
   ) {
     checkedValues = "Любой";
   } else {
-    checkedValues = checkedValues.join(", ");
+    let res = "";
+    for (let elem of checkedValues) {
+      res += statusNames[elem] + " ";
+    }
+    checkedValues = res;
   }
 
   return (
     <StatusFilter
       className={className}
-      statusValues={filterOfStatuses}
-      handleChangeStatusValues={handleChangeStatusChoose}
+      statusValues={statuses}
+      handleChangeStatusValues={statusChangeHandler}
       checkedValues={checkedValues}
     />
   );
@@ -53,8 +75,8 @@ function StatusFilter({
   statusValues,
   checkedValues,
 }) {
-  let statusFilterStyles = cn(styles._, className);
-  let buttonStyles = cn(styles.button, styles.themeIcon);
+  const statusFilterStyles = cn(styles._, className);
+  const buttonStyles = cn(styles.button, styles.themeIcon);
 
   const toggleElement = <Button icon="arrow" className={buttonStyles} />;
 
@@ -82,7 +104,6 @@ function StatusFilter({
         label="Статус заказа"
         postfix={dropdownElement}
       />
-      <div></div>
     </div>
   );
 }

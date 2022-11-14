@@ -5,6 +5,7 @@ StatusesSelector.propTypes = {
   statusValues: object,
   handleChangeStatusValues: func,
 };
+import { statusNames } from "../StatusFilter";
 
 export function StatusesSelector({ statusValues, handleChangeStatusValues }) {
   let key = 0;
@@ -16,7 +17,7 @@ export function StatusesSelector({ statusValues, handleChangeStatusValues }) {
         return (
           <div key={key} className={styles.item}>
             <Checkbox checked={el[1]} />
-            <span>{el[0]}</span>
+            <span>{statusNames[el[0]]}</span>
             <button
               className={styles.upperLayer}
               onClick={() => handleChangeStatusValues(el[0])}

@@ -10,7 +10,7 @@ DateFilter.propTypes = {
 };
 
 export function DateFilter({ className }) {
-  let {
+  const {
     filterDateFromValue,
     handleChangeFilterDateFromValue,
     handleResetFilterDateFromValue,
@@ -19,7 +19,7 @@ export function DateFilter({ className }) {
     handleResetFilterDateToValue,
   } = useContext(FiltersContext);
 
-  let DateFilterStyles = cn(styles._, className);
+  const DateFilterStyles = cn(styles._, className);
   return (
     <div className={DateFilterStyles}>
       <Input

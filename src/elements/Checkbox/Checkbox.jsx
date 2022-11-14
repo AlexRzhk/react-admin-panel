@@ -8,7 +8,7 @@ Checkbox.propTypes = {
   onChange: func,
 };
 
-let noop = () => {};
+const noop = () => {};
 
 export function Checkbox({ checked = false, onChange = noop }) {
   return (

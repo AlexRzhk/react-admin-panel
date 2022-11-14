@@ -10,7 +10,7 @@ SumFilter.propTypes = {
 };
 
 export function SumFilter({ className }) {
-  let {
+  const {
     filterSumFromValue,
     handleChangeFilterSumFromValue,
     handleResetFilterSumFromValue,
@@ -19,7 +19,7 @@ export function SumFilter({ className }) {
     handleResetFilterSumToValue,
   } = useContext(FiltersContext);
 
-  let SumFilterStyles = cn(styles._, className);
+  const SumFilterStyles = cn(styles._, className);
   return (
     <div className={SumFilterStyles}>
       <Input

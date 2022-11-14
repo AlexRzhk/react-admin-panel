@@ -18,7 +18,7 @@ export function Filter({
   handleSwitchAdditionalFilter,
   className,
 }) {
-  let componentStyles = cn(styles._, className);
+  const componentStyles = cn(styles._, className);
 
   return (
     <div className={componentStyles}>

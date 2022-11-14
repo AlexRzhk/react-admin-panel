@@ -43,7 +43,7 @@ export function Input({
   } else if (value) {
     postfixElement = <Button isShort icon="x-medium" onClick={onReset} />;
   }
-  let componentStyles = cn(styles._, className, {
+  const componentStyles = cn(styles._, className, {
     [styles.incorrect]: isIncorrect,
     [styles.disabled]: disabled,
   });

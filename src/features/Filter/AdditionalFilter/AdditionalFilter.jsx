@@ -8,6 +8,6 @@ AdditionalFilter.propTypes = {
 };
 
 export function AdditionalFilter({ className, children }) {
-  let AdditionalFilterStyles = cn(styles._, className);
+  const AdditionalFilterStyles = cn(styles._, className);
   return <div className={AdditionalFilterStyles}>{children}</div>;
 }

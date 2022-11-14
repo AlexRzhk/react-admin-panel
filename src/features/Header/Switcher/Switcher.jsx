@@ -17,11 +17,11 @@ export function Switcher({
 }) {
   const changeToLightThemeHandler = () => changeTheme("light");
   const changeToDarkThemeHandler = () => changeTheme("dark");
-  let SwitcherClasses = cn(styles._, styles.chooseTheme, className);
+  const SwitcherClasses = cn(styles._, styles.chooseTheme, className);
 
   return (
     <div className={SwitcherClasses}>
-      <span className={styles["title"]}>Выберите тему</span>
+      <span className={styles.title}>Выберите тему</span>
       <Button
         isSecondary={currentTheme === "dark"}
         isShort

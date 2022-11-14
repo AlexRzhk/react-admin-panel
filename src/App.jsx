@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 import "./App.css";
 import { Filter } from "./features/Filter/Filter";
-
 import { Header } from "./features/Header/Header";
+import { statuses } from "./features/Filter/AdditionalFilter/StatusFilter/StatusFilter";
 
 export const FiltersContext = createContext("");
 
@@ -17,14 +17,7 @@ function App() {
   const [filterDateToValue, setFilterDateToValue] = useState("");
   const [filterSumFromValue, setFilterSumFromValue] = useState("5000");
   const [filterSumToValue, setFilterSumToValue] = useState("");
-  const [filterOfStatuses, setFilterOfStatuses] = useState({
-    Новый: false,
-    Расчет: false,
-    Подтвержден: false,
-    Отложен: false,
-    Выполнен: false,
-    Отменен: false,
-  });
+  const [filterOfStatuses, setFilterOfStatuses] = useState([]);
 
   const createHandleChange = (setter) => [
     ({ target: { value } }) => setter(value),
@@ -46,21 +39,19 @@ function App() {
     setFilterDateToValue("");
     setFilterSumFromValue("");
     setFilterSumToValue("");
-    setFilterOfStatuses({
-      Новый: false,
-      Расчет: false,
-      Подтвержден: false,
-      Отложен: false,
-      Выполнен: false,
-      Отменен: false,
-    });
+    setFilterOfStatuses([]);
+    for (let elem in statuses) {
+      statuses[elem] = false;
+    }
   };
 
   const handleChangeStatusChoose = (status) => {
-    setFilterOfStatuses({
-      ...filterOfStatuses,
-      [status]: !filterOfStatuses[status],
-    });
+    if (filterOfStatuses.includes(status)) {
+      filterOfStatuses.splice(filterOfStatuses.indexOf(status), 1);
+    } else {
+      filterOfStatuses.push(status);
+    }
+    setFilterOfStatuses([...filterOfStatuses]);
   };
 
   return (

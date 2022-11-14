@@ -13,6 +13,7 @@ import { ReactComponent as Arrow } from "./assets/v_arrow.svg";
 import { ReactComponent as X_large } from "./assets/x-large.svg";
 import { ReactComponent as X_medium } from "./assets/x-medium.svg";
 import styles from "./Icon.module.css";
+import cn from "classnames";
 
 import { string } from "prop-types";
 
@@ -41,14 +42,14 @@ export function Icon({ type }) {
     case "refresh":
       return <Refresh width="1rem" />;
     case "search":
-      return <Search className={styles._ + " " + styles.search} />;
+      return <Search className={cn(styles._, styles.search)} />;
     case "sun":
       return <Sun width="1rem" />;
     case "arrow":
       return <Arrow width="1rem" />;
     case "x-large":
-      return <X_large className={styles._ + " " + styles.x} />;
+      return <X_large className={cn(styles._, styles.x)} />;
     case "x-medium":
-      return <X_medium className={styles._ + " " + styles.x} />;
+      return <X_medium className={cn(styles._, styles.x)} />;
   }
 }

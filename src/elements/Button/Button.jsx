@@ -16,7 +16,7 @@ Button.propTypes = {
   className: string,
   props: array,
 };
-let noop = () => {};
+const noop = () => {};
 
 export function Button({
   isFullWidth = false,
@@ -30,7 +30,7 @@ export function Button({
   className = "",
   ...props
 }) {
-  let buttonStyles = cn(styles._, className, {
+  const buttonStyles = cn(styles._, className, {
     [styles.fullWidth]: isFullWidth,
     [styles.secondary]: isSecondary,
     [styles.short]: isShort,
