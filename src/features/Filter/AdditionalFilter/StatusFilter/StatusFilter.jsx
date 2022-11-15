@@ -19,30 +19,19 @@ StatusFilter.propTypes = {
   handleChangeStatusValues: func,
   statusValues: object,
   checkedValues: string,
-};
-export const statuses = {
-  new: false,
-  calculating: false,
-  confirm: false,
-  postponed: false,
-  done: false,
-  canceled: false,
-};
-export const statusNames = {
-  new: "Новый",
-  calculating: "Рассчет",
-  confirm: "Подтвержден",
-  postponed: "Отложен",
-  done: "Выполнен",
-  canceled: "Отменен",
+  statusNames: object,
 };
 
 export function StatusFilterContainer({ className }) {
-  const { handleChangeStatusChoose } = useContext(FiltersContext);
-
+  const {
+    handleChangeStatusChoose,
+    statuses,
+    statusNames,
+    handleStatusChange,
+  } = useContext(FiltersContext);
   const statusChangeHandler = (status) => {
     handleChangeStatusChoose(status);
-    statuses[status] = !statuses[status];
+    handleStatusChange(status);
   };
 
   let checkedValues = Object.keys(statuses).filter((el) => statuses[el]);
@@ -63,6 +52,7 @@ export function StatusFilterContainer({ className }) {
     <StatusFilter
       className={className}
       statusValues={statuses}
+      statusNames={statusNames}
       handleChangeStatusValues={statusChangeHandler}
       checkedValues={checkedValues}
     />
@@ -73,6 +63,7 @@ function StatusFilter({
   className,
   handleChangeStatusValues,
   statusValues,
+  statusNames,
   checkedValues,
 }) {
   const statusFilterStyles = cn(styles._, className);
@@ -91,6 +82,7 @@ function StatusFilter({
     >
       <StatusesSelector
         statusValues={statusValues}
+        statusNames={statusNames}
         handleChangeStatusValues={handleChangeStatusValues}
       />
     </MyDropdown>

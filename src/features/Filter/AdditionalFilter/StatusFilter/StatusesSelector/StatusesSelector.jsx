@@ -4,10 +4,14 @@ import { func, object } from "prop-types";
 StatusesSelector.propTypes = {
   statusValues: object,
   handleChangeStatusValues: func,
+  statusNames: object,
 };
-import { statusNames } from "../StatusFilter";
 
-export function StatusesSelector({ statusValues, handleChangeStatusValues }) {
+export function StatusesSelector({
+  statusValues,
+  statusNames,
+  handleChangeStatusValues,
+}) {
   let key = 0;
   const statuses = Object.entries(statusValues);
   return (

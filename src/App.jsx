@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 import "./App.css";
 import { Filter } from "./features/Filter/Filter";
 import { Header } from "./features/Header/Header";
-import { statuses } from "./features/Filter/AdditionalFilter/StatusFilter/StatusFilter";
 
 export const FiltersContext = createContext("");
 
@@ -18,6 +17,22 @@ function App() {
   const [filterSumFromValue, setFilterSumFromValue] = useState("5000");
   const [filterSumToValue, setFilterSumToValue] = useState("");
   const [filterOfStatuses, setFilterOfStatuses] = useState([]);
+  const [statuses, setStatus] = useState({
+    new: false,
+    calculating: false,
+    confirm: false,
+    postponed: false,
+    done: false,
+    canceled: false,
+  });
+  const statusNames = {
+    new: "Новый",
+    calculating: "Рассчет",
+    confirm: "Подтвержден",
+    postponed: "Отложен",
+    done: "Выполнен",
+    canceled: "Отменен",
+  };
 
   const createHandleChange = (setter) => [
     ({ target: { value } }) => setter(value),
@@ -33,6 +48,19 @@ function App() {
     createHandleChange(setFilterSumFromValue);
   const [handleChangeFilterSumToValue, handleResetFilterSumToValue] =
     createHandleChange(setFilterSumToValue);
+  const [handleStatusChange, handleStatusReset] = [
+    (status) => {
+      statuses[status] = !statuses[status];
+      setStatus(statuses);
+    },
+    () => {
+      for (let elem in statuses) {
+        statuses[elem] = false;
+      }
+      setStatus(statuses);
+    },
+  ];
+
   const handleResetAllFilters = () => {
     setSearchbarValues("");
     setFilterDateFromValue("");
@@ -40,9 +68,7 @@ function App() {
     setFilterSumFromValue("");
     setFilterSumToValue("");
     setFilterOfStatuses([]);
-    for (let elem in statuses) {
-      statuses[elem] = false;
-    }
+    handleStatusReset();
   };
 
   const handleChangeStatusChoose = (status) => {
@@ -75,6 +101,9 @@ function App() {
         filterOfStatuses,
         handleChangeStatusChoose,
         handleResetAllFilters,
+        statuses,
+        statusNames,
+        handleStatusChange,
       }}
     >
       <div className="pageWrapper">
