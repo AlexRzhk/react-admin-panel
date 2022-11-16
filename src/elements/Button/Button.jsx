@@ -15,6 +15,7 @@ Button.propTypes = {
   type: string,
   className: string,
   props: array,
+  isDanger: bool,
 };
 const noop = () => {};
 
@@ -28,6 +29,7 @@ export function Button({
   type,
   disabled = false,
   className = "",
+  isDanger = false,
   ...props
 }) {
   const buttonStyles = cn(styles._, className, {
@@ -35,6 +37,7 @@ export function Button({
     [styles.secondary]: isSecondary,
     [styles.short]: isShort,
     [styles.disabled]: disabled,
+    [styles.danger]: isDanger,
     [styles.iconOnly]: !children,
   });
 

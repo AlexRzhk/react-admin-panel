@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import "./App.css";
-import { Filter } from "./features/Filter/Filter";
-import { Header } from "./features/Header/Header";
+import { OrdersList } from "./features/OrdersList/Table/OrdersList";
 
 export const FiltersContext = createContext("");
 
@@ -83,6 +82,8 @@ function App() {
   return (
     <FiltersContext.Provider
       value={{
+        additionalFilterVisibility,
+        handleSwitchAdditionalFilter,
         searchbarValue,
         handleChangeSearchbar,
         handleResetSearchbar,
@@ -106,13 +107,7 @@ function App() {
         handleStatusChange,
       }}
     >
-      <div className="pageWrapper">
-        <Header />
-        <Filter
-          additionalFilterVisibility={additionalFilterVisibility}
-          handleSwitchAdditionalFilter={handleSwitchAdditionalFilter}
-        />
-      </div>
+      <OrdersList />
     </FiltersContext.Provider>
   );
 }

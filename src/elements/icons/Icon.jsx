@@ -19,37 +19,61 @@ import { string } from "prop-types";
 
 Icon.propTypes = {
   type: string,
+  fill: string,
+  stroke: string,
+  className: string,
 };
 
-export function Icon({ type }) {
+export function Icon({ className = "", type, fill = "", stroke = "" }) {
   switch (type) {
     case "abort":
-      return <Abort width="1rem" />;
+      return (
+        <Abort
+          width="1rem"
+          fill={fill}
+          stroke={stroke}
+          className={cn(className)}
+        />
+      );
     case "bin":
-      return <Bin width="1rem" />;
+      return <Bin width="1rem" className={cn(className)} />;
     case "checkmark":
-      return <Checkmark width="1rem" />;
+      return (
+        <Checkmark
+          width="1rem"
+          fill={fill}
+          stroke={stroke}
+          className={cn(className)}
+        />
+      );
     case "dot":
-      return <Dot width="1rem" />;
+      return (
+        <Dot
+          width="1rem"
+          fill={fill}
+          stroke={stroke}
+          className={cn(className)}
+        />
+      );
     case "filter":
-      return <Filter width="1rem" />;
+      return <Filter width="1rem" className={cn(className)} />;
     case "locked":
-      return <Locked width="1rem" />;
+      return <Locked width="1rem" className={cn(className)} />;
     case "moon":
-      return <Moon width="1rem" />;
+      return <Moon width="1rem" className={cn(className)} />;
     case "pencil":
-      return <Pencil width="1rem" />;
+      return <Pencil width="1rem" className={cn(className)} />;
     case "refresh":
-      return <Refresh width="1rem" />;
+      return <Refresh width="1rem" className={cn(className)} />;
     case "search":
-      return <Search className={cn(styles._, styles.search)} />;
+      return <Search className={cn(styles._, styles.search, className)} />;
     case "sun":
-      return <Sun width="1rem" />;
+      return <Sun width="1rem" className={cn(className)} />;
     case "arrow":
-      return <Arrow width="1rem" />;
+      return <Arrow width="1rem" className={cn(className)} />;
     case "x-large":
-      return <X_large className={cn(styles._, styles.x)} />;
+      return <X_large className={cn(styles._, styles.x, className)} />;
     case "x-medium":
-      return <X_medium className={cn(styles._, styles.x)} />;
+      return <X_medium className={cn(styles._, styles.x, className)} />;
   }
 }
