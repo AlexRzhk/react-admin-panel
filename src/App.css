@@ -18,14 +18,6 @@ body {
   margin: 0;
 }
 
-.pageWrapper {
-  padding: 2rem 3rem 0 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: calc(100vh - 2rem);
-}
-
 .dark {
   --font-color: #bcc4cc;
   --background-color: #2b2d33;
