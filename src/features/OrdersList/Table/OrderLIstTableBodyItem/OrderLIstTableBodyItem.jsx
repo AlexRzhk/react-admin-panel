@@ -6,7 +6,7 @@ import { TableCell } from "../../../../elements/Table/TableCell/TableCell";
 import { Checkbox } from "../../../../elements/Checkbox/Checkbox";
 import { TableRow } from "../../../../elements/Table/TableRow/TableRow";
 
-import { string, number, func, bool } from "prop-types";
+import { string, number, func, bool, any } from "prop-types";
 
 OrderListTableBodyItem.propTypes = {
   isChecked: bool,
@@ -14,7 +14,7 @@ OrderListTableBodyItem.propTypes = {
   index: number,
   data: string,
   status: string,
-  positionCount: number,
+  positionCount: any,
   sum: string,
   fullName: string,
 };
