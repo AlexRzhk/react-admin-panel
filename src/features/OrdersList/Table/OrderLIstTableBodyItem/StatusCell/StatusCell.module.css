@@ -6,9 +6,12 @@
 
 .canceled {
   fill-opacity: 0.5;
+  stroke-opacity: 0.5;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .done {
-  color: #0fb864;
+  color: rgba(15, 184, 100, 0.5);
+  stroke-opacity: 0.5;
   fill-opacity: 0.5;
 }
