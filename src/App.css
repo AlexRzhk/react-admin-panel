@@ -15,14 +15,7 @@ body {
   color: var(--font-color);
   background-color: var(--background-color);
   font-family: "Ubuntu", sans-serif;
-}
-
-.pageWrapper {
-  padding: 2rem 3rem 0 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: calc(100vh - 2rem);
+  margin: 0;
 }
 
 .dark {

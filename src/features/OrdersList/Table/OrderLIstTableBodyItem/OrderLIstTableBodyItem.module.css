@@ -1,0 +1,7 @@
+.bodyRow {
+  border-bottom: 1px solid var(--dim-elements-color);
+}
+
+.checked {
+  background-color: var(--additional-filter-background);
+}
