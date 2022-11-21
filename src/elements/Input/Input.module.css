@@ -31,7 +31,7 @@
   line-height: 1rem;
 }
 
-.iconArea {
+.area {
   width: 100%;
   min-height: 100%;
   padding: 0;
@@ -43,7 +43,7 @@
   color: var(--font-color);
 }
 
-.iconArea::placeholder {
+.area::placeholder {
   color: var(--dim-elements-color);
 }
 

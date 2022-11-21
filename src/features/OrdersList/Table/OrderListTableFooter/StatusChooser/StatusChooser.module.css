@@ -37,7 +37,7 @@
   width: 0.5rem;
   fill: var(--background-color-white);
   top: 0.1rem;
-  left: 0.15rem;
+  left: 0.1rem;
   transition: opacity 0.25s ease-in;
 }
 
