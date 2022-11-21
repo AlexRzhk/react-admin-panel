@@ -26,6 +26,15 @@ export function StatusChooser() {
             id={status}
             name="radioGroup"
           />
+          <div className={styles.iconArea}>
+            <svg
+              className={styles.icon}
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="8" cy="8" r="8" stroke="none" />
+            </svg>
+          </div>
           <div className={styles.statusName}>{statusNames[status]}</div>
         </label>
       ))}
