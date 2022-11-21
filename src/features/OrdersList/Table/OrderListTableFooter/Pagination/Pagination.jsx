@@ -2,21 +2,21 @@ import styles from "./Pagination.module.css";
 import { Button } from "../../../../../elements/Button/Button";
 import { MyDropdown } from "../../../../../elements/Dropdown/MyDropdown";
 import { PageChooser } from "./PageChooser/PageChooser";
-import { useState } from "react";
 import { number } from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
 
 Pagination.propTypes = {
   ordersLength: number,
 };
 
 export function Pagination({ ordersLength }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageLimit = 15;
-
+  const { pageLimit, currentPage } = useSelector((state) => state.filters);
   const maxPage = Math.ceil(ordersLength / pageLimit);
 
+  const dispatch = useDispatch();
   const handleChangePage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    dispatch(changeCurrentPage(pageNumber));
   };
 
   const dropdownTrigger = <Button>#</Button>;
@@ -91,7 +91,7 @@ export function Pagination({ ordersLength }) {
         )}
       </div>
       <MyDropdown trigger={dropdownTrigger} childrenClassName={styles.dropdown}>
-        <PageChooser ordersLength={ordersLength} />
+        <PageChooser maxPage={maxPage} />
       </MyDropdown>
     </div>
   );

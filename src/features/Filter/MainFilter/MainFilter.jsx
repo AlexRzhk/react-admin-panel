@@ -4,8 +4,12 @@ import { Icon } from "../../../elements/icons/Icon.jsx";
 import { Button } from "../../../elements/Button/Button.jsx";
 import styles from "./MainFilter.module.css";
 import cn from "classnames";
-import { useContext } from "react";
-import { FiltersContext } from "../../../App";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeSearchbar,
+  resetAllFilters,
+} from "../../store/Filters/FiltersSlice";
+import { getSearchbarValue } from "../../store/Selectors/Selectors";
 
 MainFilter.propTypes = {
   className: string,
@@ -18,12 +22,22 @@ export function MainFilter({
   handleSwitchAdditionalFilter,
   className,
 }) {
-  let {
-    searchbarValue,
-    handleChangeSearchbar,
-    handleResetSearchbar,
-    handleResetAllFilters,
-  } = useContext(FiltersContext);
+  const dispatch = useDispatch();
+
+  const searchbarValue = useSelector(getSearchbarValue);
+
+  const handleChangeSearchbar = ({ target: { value } }) => {
+    dispatch(changeSearchbar(value));
+  };
+
+  const handleResetValue = () => {
+    dispatch(changeSearchbar(""));
+  };
+
+  const handleResetAllFilters = () => {
+    dispatch(resetAllFilters());
+  };
+
   let componentStyles = cn(styles._, className);
   return (
     <div className={componentStyles}>
@@ -33,7 +47,7 @@ export function MainFilter({
             placeholder="Номер заказа или ФИО"
             prefix={<Icon type="search" />}
             value={searchbarValue}
-            onReset={handleResetSearchbar}
+            onReset={handleResetValue}
             onChange={handleChangeSearchbar}
           />
         </div>

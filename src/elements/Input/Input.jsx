@@ -7,6 +7,7 @@ Input.propTypes = {
   value: string,
   onChange: func,
   onReset: func,
+  onKeyDown: func,
   isIncorrect: bool,
   disabled: bool,
   label: string,
@@ -23,6 +24,7 @@ export function Input({
   value = "",
   onChange = noop,
   onReset = noop,
+  onKeyDown = noop,
   isIncorrect = false,
   disabled = false,
   label,
@@ -61,6 +63,7 @@ export function Input({
             onChange={onChange}
             disabled={!!disabled}
             readOnly={!!readOnly}
+            onKeyDown={onKeyDown}
           />
           {postfixElement}
         </div>

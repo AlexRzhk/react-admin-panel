@@ -11,7 +11,7 @@ import { string, number, func, bool, any } from "prop-types";
 OrderListTableBodyItem.propTypes = {
   isChecked: bool,
   onChangeCheck: func,
-  index: number,
+  id: number,
   data: string,
   status: string,
   positionCount: any,
@@ -22,7 +22,7 @@ OrderListTableBodyItem.propTypes = {
 export function OrderListTableBodyItem({
   isChecked,
   onChangeCheck,
-  index,
+  id,
   data,
   status,
   positionCount,
@@ -36,7 +36,7 @@ export function OrderListTableBodyItem({
         <Checkbox checked={isChecked} onChange={onChangeCheck} />
       </TableCell>
 
-      <TableCell className={rowStyles.index}>{index}</TableCell>
+      <TableCell className={rowStyles.index}>{id}</TableCell>
 
       <TableCell className={rowStyles.date}>{data}</TableCell>
 
@@ -49,8 +49,7 @@ export function OrderListTableBodyItem({
       </TableCell>
 
       <TableCell className={rowStyles.sum}>
-        {status === "canceled" ? "-" : sum.toLocaleString("ru")}
-        &nbsp;
+        {status === "canceled" ? sum : sum.toLocaleString("ru")}
         {status !== "canceled" && RUB_SYMBOL}
       </TableCell>
 

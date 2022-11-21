@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { orders } from "../orders/orders";
 import { Table } from "../../../elements/Table/Table";
 import { OrderListTableHeader } from "./OrderLIstTableHeader/OrderListTableHeader";
@@ -8,59 +8,49 @@ import { OrderListTableFooter } from "./OrderListTableFooter/OrderListTableFoote
 import styles from "./OrdersLIst.module.css";
 import { Header } from "../../Header/Header";
 import { Filter } from "../../Filter/Filter";
-import { useContext } from "react";
-import { FiltersContext } from "../../../App";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCheckedOrdersId,
+  getFilteredOrdersByPageAndAllOrdersLength,
+} from "../../store/Selectors/Selectors";
+import { setOrderCheck } from "../../store/Filters/FiltersSlice";
+import { getOrders } from "../../store/Orders/OrdersSlice";
 
 export function OrdersList() {
-  const { additionalFilterVisibility, handleSwitchAdditionalFilter } =
-    useContext(FiltersContext);
-  const [activeSorter, setActiveSorter] = useState("date");
-  const [checkedRows, setCheckedRows] = useState([]);
+  const dispatch = useDispatch();
 
-  const handleToggleRowCheck = (rowId) => {
-    if (checkedRows.includes(rowId)) {
-      setCheckedRows(checkedRows.filter((id) => rowId !== id));
-    } else {
-      const newCheckedRows = [...checkedRows];
-      newCheckedRows.push(rowId);
-      setCheckedRows(newCheckedRows);
-    }
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getOrders(orders));
+    }, 500);
+  }, []);
+
+  const checkedOrders = useSelector(getCheckedOrdersId);
+  const handleChangeOrderCheck = (id) => {
+    dispatch(setOrderCheck(id));
   };
 
-  const checkAllRows = () => {
-    if (orders.length === checkedRows.length) {
-      setCheckedRows([]);
-    } else setCheckedRows(orders.map((order) => order.id));
-  };
+  const [filteredOrders, ordersLength] = useSelector(
+    getFilteredOrdersByPageAndAllOrdersLength
+  );
 
   return (
     <div className={styles.pageWrapper}>
       <Header />
-      <Filter
-        additionalFilterVisibility={additionalFilterVisibility}
-        handleSwitchAdditionalFilter={handleSwitchAdditionalFilter}
-      />
+      <Filter />
       <Table>
-        <OrderListTableHeader
-          isAllRowChecked={orders.length === checkedRows.length}
-          activeSorter={activeSorter}
-          setActiveSorter={setActiveSorter}
-          checkAllRows={checkAllRows}
-        />
+        <OrderListTableHeader allOrdersOnPage={filteredOrders} />
         <TableBody>
-          {orders.map((order) => (
+          {filteredOrders.map((order) => (
             <OrderListTableBodyItem
               key={order.id}
-              isChecked={checkedRows.includes(order.id)}
-              onChangeCheck={() => handleToggleRowCheck(order.id)}
+              isChecked={checkedOrders.includes(order.id)}
+              onChangeCheck={() => handleChangeOrderCheck(order.id)}
               {...order}
             />
           ))}
         </TableBody>
-        <OrderListTableFooter
-          chosenOrdersLength={checkedRows.length}
-          ordersLength={orders.length}
-        />
+        <OrderListTableFooter ordersLength={ordersLength} />
       </Table>
     </div>
   );

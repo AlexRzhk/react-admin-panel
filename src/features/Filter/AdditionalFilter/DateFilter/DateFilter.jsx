@@ -1,23 +1,36 @@
 import { Input } from "../../../../elements/Input/Input.jsx";
 import styles from "./DateFilter.module.css";
 import cn from "classnames";
-import { useContext } from "react";
-import { FiltersContext } from "../../../../App";
 
 import { string } from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeFilterDateFromValue,
+  changeFilterDateToValue,
+} from "../../../store/Filters/FiltersSlice";
 DateFilter.propTypes = {
   className: string,
 };
 
 export function DateFilter({ className }) {
-  const {
-    filterDateFromValue,
-    handleChangeFilterDateFromValue,
-    handleResetFilterDateFromValue,
-    filterDateToValue,
-    handleChangeFilterDateToValue,
-    handleResetFilterDateToValue,
-  } = useContext(FiltersContext);
+  const { filterDateFromValue, filterDateToValue } = useSelector(
+    (state) => state.filters
+  );
+
+  const dispatch = useDispatch();
+
+  const handleChangeFilterDateFromValue = ({ target: { value } }) => {
+    dispatch(changeFilterDateFromValue(value));
+  };
+  const handleChangeFilterDateToValue = ({ target: { value } }) => {
+    dispatch(changeFilterDateToValue(value));
+  };
+  const handleResetFilterDateFromValue = () => {
+    dispatch(changeFilterDateFromValue(""));
+  };
+  const handleResetFilterDateToValue = () => {
+    dispatch(changeFilterDateToValue(""));
+  };
 
   const DateFilterStyles = cn(styles._, className);
   return (

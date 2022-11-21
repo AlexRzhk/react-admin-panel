@@ -3,46 +3,43 @@ import styles from "./StatusFilter.module.css";
 import cn from "classnames";
 import statusSelectorStyles from "./StatusesSelector/StatusesSelector.module.css";
 
-import { string, bool, func, object } from "prop-types";
+import { string } from "prop-types";
 import { Input } from "../../../../elements/Input/Input";
 import { Button } from "../../../../elements/Button/Button";
 import { StatusesSelector } from "./StatusesSelector/StatusesSelector";
-import { FiltersContext } from "../../../../App";
+import { FiltersContext, statusNames } from "../../../../App";
 import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
+import { getCheckedStatuses } from "../../../store/Selectors/Selectors";
+import { useSelector } from "react-redux";
 StatusFilterContainer.propTypes = {
   className: string,
 };
 StatusFilter.propTypes = {
   className: string,
-  isDropdownVisible: bool,
-  switchVisibilityHandler: func,
-  handleChangeStatusValues: func,
-  statusValues: object,
   checkedValues: string,
-  statusNames: object,
 };
 
 export function StatusFilterContainer({ className }) {
-  const {
-    handleChangeStatusChoose,
-    statuses,
-    statusNames,
-    handleStatusChange,
-  } = useContext(FiltersContext);
+  const { handleChangeStatusChoose, handleStatusChange } =
+    useContext(FiltersContext);
+
+  const statuses = Object.keys(statusNames);
+  const checkedStatuses = useSelector(getCheckedStatuses);
+
   const statusChangeHandler = (status) => {
     handleChangeStatusChoose(status);
     handleStatusChange(status);
   };
 
-  let checkedValues = Object.keys(statuses).filter((el) => statuses[el]);
+  let checkedValues = "";
   if (
-    checkedValues.length === 0 ||
-    checkedValues.length === Object.keys(statuses).length
+    checkedStatuses.length === 0 ||
+    checkedStatuses.length === Object.keys(statuses).length
   ) {
     checkedValues = "Любой";
   } else {
     let res = "";
-    for (let elem of checkedValues) {
+    for (let elem of checkedStatuses) {
       res += statusNames[elem] + " ";
     }
     checkedValues = res;
@@ -59,13 +56,7 @@ export function StatusFilterContainer({ className }) {
   );
 }
 
-function StatusFilter({
-  className,
-  handleChangeStatusValues,
-  statusValues,
-  statusNames,
-  checkedValues,
-}) {
+function StatusFilter({ className, checkedValues }) {
   const statusFilterStyles = cn(styles._, className);
   const buttonStyles = cn(styles.button, styles.themeIcon);
 
@@ -80,11 +71,7 @@ function StatusFilter({
       )}
       triggerClassNameWithActiveTrigger={styles.flipped}
     >
-      <StatusesSelector
-        statusValues={statusValues}
-        statusNames={statusNames}
-        handleChangeStatusValues={handleChangeStatusValues}
-      />
+      <StatusesSelector />
     </MyDropdown>
   );
 

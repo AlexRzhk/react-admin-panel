@@ -1,23 +1,36 @@
 import styles from "./SumFilter.module.css";
 import cn from "classnames";
-import { useContext } from "react";
-import { FiltersContext } from "../../../../App";
 
 import { string } from "prop-types";
 import { Input } from "../../../../elements/Input/Input";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeFilterSumFromValue,
+  changeFilterSumToValue,
+} from "../../../store/Filters/FiltersSlice";
 SumFilter.propTypes = {
   className: string,
 };
 
 export function SumFilter({ className }) {
-  const {
-    filterSumFromValue,
-    handleChangeFilterSumFromValue,
-    handleResetFilterSumFromValue,
-    filterSumToValue,
-    handleChangeFilterSumToValue,
-    handleResetFilterSumToValue,
-  } = useContext(FiltersContext);
+  const { filterSumFromValue, filterSumToValue } = useSelector(
+    (state) => state.filters
+  );
+
+  const dispatch = useDispatch();
+
+  const handleChangeFilterSumFromValue = ({ target: { value } }) => {
+    dispatch(changeFilterSumFromValue(value));
+  };
+  const handleChangeFilterSumToValue = ({ target: { value } }) => {
+    dispatch(changeFilterSumToValue(value));
+  };
+  const handleResetFilterSumFromValue = () => {
+    dispatch(changeFilterSumFromValue(""));
+  };
+  const handleResetFilterSumToValue = () => {
+    dispatch(changeFilterSumToValue(""));
+  };
 
   const SumFilterStyles = cn(styles._, className);
   return (

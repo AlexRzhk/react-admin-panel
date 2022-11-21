@@ -1,30 +1,33 @@
 import { Checkbox } from "../../../../../elements/Checkbox/Checkbox.jsx";
 import styles from "./StatusesSelector.module.css";
-import { func, object } from "prop-types";
-StatusesSelector.propTypes = {
-  statusValues: object,
-  handleChangeStatusValues: func,
-  statusNames: object,
-};
+import { useDispatch, useSelector } from "react-redux";
+import { toggleStatusCheck } from "../../../../store/Filters/FiltersSlice";
+import { getCheckedStatuses } from "../../../../store/Selectors/Selectors";
+import { statusNames } from "../../../../../App";
 
-export function StatusesSelector({
-  statusValues,
-  statusNames,
-  handleChangeStatusValues,
-}) {
+export function StatusesSelector() {
+  const statuses = Object.keys(statusNames);
+  const checkedStatuses = useSelector(getCheckedStatuses);
+
+  const dispatch = useDispatch();
+
+  const handleChangeStatusCheck = (status) => {
+    dispatch(toggleStatusCheck(status));
+  };
+
   let key = 0;
-  const statuses = Object.entries(statusValues);
+
   return (
     <div className={styles._}>
       {statuses.map((el) => {
         key++;
         return (
           <div key={key} className={styles.item}>
-            <Checkbox checked={el[1]} />
-            <span>{statusNames[el[0]]}</span>
+            <Checkbox checked={checkedStatuses.includes(el)} />
+            <span>{statusNames[el]}</span>
             <button
               className={styles.upperLayer}
-              onClick={() => handleChangeStatusValues(el[0])}
+              onClick={() => handleChangeStatusCheck(el)}
             />
           </div>
         );

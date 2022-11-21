@@ -24,3 +24,11 @@
   padding: 1rem;
   margin-bottom: 0.5rem;
 }
+
+.statusChooser {
+  right: 0;
+  bottom: 2.25rem;
+
+  width: 10rem;
+  height: 13rem;
+}
