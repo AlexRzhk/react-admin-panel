@@ -40,10 +40,10 @@
   background: none;
   font-size: 13px;
   font-family: "Ubuntu", sans-serif;
-  color: var(--font-color);
+  color: var(--font-cogit addlor);
 }
 
-.iconArea::placeholder {
+.area::placeholder {
   color: var(--dim-elements-color);
 }
 
