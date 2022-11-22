@@ -9,6 +9,7 @@ import {
   changeSearchbar,
   resetAllFilters,
 } from "../../store/Filters/FiltersSlice";
+import { resetCheckedOrders } from "../../store/Orders/OrdersSlice";
 import { getSearchbarValue } from "../../store/Selectors/Selectors";
 
 MainFilter.propTypes = {
@@ -28,6 +29,7 @@ export function MainFilter({
 
   const handleChangeSearchbar = ({ target: { value } }) => {
     dispatch(changeSearchbar(value));
+    dispatch(resetCheckedOrders());
   };
 
   const handleResetValue = () => {

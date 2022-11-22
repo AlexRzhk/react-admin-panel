@@ -14,9 +14,7 @@ const initialState = {
   activeSorter: "date",
   isAscending: true,
 
-  checkedOrdersId: [],
-
-  pageLimit: 15,
+  pageLimit: 10,
   currentPage: 1,
 };
 
@@ -28,7 +26,6 @@ const filtersSlice = createSlice({
       return {
         ...state,
         searchbar: action.payload,
-        checkedOrdersId: [],
       };
     },
 
@@ -81,7 +78,7 @@ const filtersSlice = createSlice({
     },
 
     activateAdditionalFilters(state) {
-      return { ...state, isAdditionalFiltersActive: true, checkedOrdersId: [] };
+      return { ...state, isAdditionalFiltersActive: true };
     },
 
     changeActiveSorter(state, action) {
@@ -99,30 +96,8 @@ const filtersSlice = createSlice({
       return initialState;
     },
 
-    setOrderCheck(state, action) {
-      if (state.checkedOrdersId.includes(action.payload)) {
-        return {
-          ...state,
-          checkedOrdersId: state.checkedOrdersId.filter(
-            (id) => id !== action.payload
-          ),
-        };
-      }
-      return {
-        ...state,
-        checkedOrdersId: [...state.checkedOrdersId, action.payload],
-      };
-    },
-    resetAllCheckOrders(state) {
-      return { ...state, checkedOrdersId: [] };
-    },
-
-    checkAllOrdersOnPage(state, action) {
-      return { ...state, checkedOrdersId: action.payload };
-    },
-
     changeCurrentPage(state, action) {
-      return { ...state, currentPage: action.payload, checkedOrdersId: [] };
+      return { ...state, currentPage: action.payload };
     },
   },
 });
@@ -140,10 +115,7 @@ export const {
   activateAdditionalFilters,
   changeActiveSorter,
   changeSorterDirection,
-  setOrderCheck,
   changeCurrentPage,
-  checkAllOrdersOnPage,
-  resetAllCheckOrders,
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

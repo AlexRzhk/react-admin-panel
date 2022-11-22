@@ -2,6 +2,8 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   allOrders: [],
+  checkedOrdersID: [],
+  formChangeOrder: {},
 };
 
 const ordersSlice = createSlice({
@@ -25,8 +27,52 @@ const ordersSlice = createSlice({
       );
       return { ...state, allOrders: newOrders };
     },
+
+    toggleOrderCheck(state, action) {
+      if (state.checkedOrdersID.includes(action.payload)) {
+        return {
+          ...state,
+          checkedOrdersID: state.checkedOrdersID.filter(
+            (id) => id !== action.payload
+          ),
+        };
+      }
+      return {
+        ...state,
+        checkedOrdersID: [...state.checkedOrdersID, action.payload],
+      };
+    },
+    resetCheckedOrders(state) {
+      return { ...state, checkedOrdersID: [] };
+    },
+    checkAllOrdersOnPage(state, action) {
+      return { ...state, checkedOrdersID: action.payload };
+    },
+    changeOrder(state, action) {
+      const newOrders = state.allOrders.map((order) =>
+        order.id === action.payload.id
+          ? {
+              ...order,
+              status: action.payload.status,
+              fullName: action.payload.fullName,
+            }
+          : order
+      );
+      return { ...state, allOrders: newOrders };
+    },
+    setFormOrder(state, action) {
+      return { ...state, formChangeOrder: action.payload.order };
+    },
   },
 });
 
-export const { getOrders, changeOrders, deleteOrders } = ordersSlice.actions;
+export const {
+  getOrders,
+  changeOrders,
+  deleteOrders,
+  toggleOrderCheck,
+  resetCheckedOrders,
+  checkAllOrdersOnPage,
+  changeOrder,
+} = ordersSlice.actions;
 export default ordersSlice.reducer;

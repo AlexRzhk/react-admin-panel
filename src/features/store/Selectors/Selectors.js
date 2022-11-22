@@ -1,8 +1,9 @@
 export const getCheckedStatuses = (state) => state.filters.checkedStatuses;
 export const getSearchbarValue = (state) => state.filters.searchbar;
-export const getCheckedOrdersId = (state) => state.filters.checkedOrdersId;
-export const getCheckedOrdersIdLength = (state) =>
-  state.filters.checkedOrdersId.length;
+
+export const getCheckedOrdersID = (state) => state.orders.checkedOrdersID;
+export const getCheckedOrdersIDLength = (state) =>
+  state.orders.checkedOrdersID.length;
 
 const getObjectDate = (dateString) => {
   return new Date(dateString);
@@ -26,6 +27,14 @@ const sortByKey = (key, isAscending, array) => {
   return array.sort(getSorter(key, isAscending));
 };
 
+export const getOrderByID = (id) => {
+  return (state) => {
+    let orders = [...state.orders.allOrders];
+    orders = orders.filter((order) => order.id === id);
+    return orders[0];
+  };
+};
+
 export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   const {
     searchbar,
@@ -42,7 +51,6 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   } = state.filters;
 
   let filteredOrders = [...state.orders.allOrders];
-
   if (searchbar) {
     filteredOrders = filteredOrders.filter((order) => {
       return (
@@ -59,9 +67,9 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
       );
     }
     if (filterSumToValue) {
-      filteredOrders = filteredOrders.filter(
-        (order) => order.sum <= filterSumToValue
-      );
+      filteredOrders = filteredOrders.filter((order) => {
+        return order.sum <= filterSumToValue;
+      });
     }
 
     if (filterDateFromValue) {

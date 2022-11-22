@@ -5,6 +5,7 @@ import { PageChooser } from "./PageChooser/PageChooser";
 import { number } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
+import { resetCheckedOrders } from "../../../../store/Orders/OrdersSlice";
 
 Pagination.propTypes = {
   ordersLength: number,
@@ -16,6 +17,7 @@ export function Pagination({ ordersLength }) {
 
   const dispatch = useDispatch();
   const handleChangePage = (pageNumber) => {
+    dispatch(resetCheckedOrders());
     dispatch(changeCurrentPage(pageNumber));
   };
 

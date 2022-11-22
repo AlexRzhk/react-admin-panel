@@ -10,11 +10,15 @@ import cn from "classnames";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activateAdditionalFilters } from "../store/Filters/FiltersSlice";
+import { changeCurrentPage } from "../store/Filters/FiltersSlice";
+import { resetCheckedOrders } from "../store/Orders/OrdersSlice";
+
 Filter.propTypes = {
   className: string,
 };
 
 export function Filter({ className }) {
+  const firstPage = 1;
   const [additionalFilterVisibility, setAdditionalFilterVisibility] =
     useState(false);
 
@@ -25,7 +29,9 @@ export function Filter({ className }) {
   const dispatch = useDispatch();
 
   const handleActivateAdditionalFilters = () => {
+    dispatch(changeCurrentPage(firstPage));
     dispatch(activateAdditionalFilters());
+    dispatch(resetCheckedOrders());
   };
 
   const handleSwitchAdditionalFilter = () =>

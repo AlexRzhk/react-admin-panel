@@ -1,10 +1,10 @@
 import { Input } from "../../../../../../elements/Input/Input";
 import { number } from "prop-types";
-import { changeCurrentPage } from "../../../../../store/Filters/FiltersSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
-const ENTER_KEY_CODE = 13;
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCurrentPage } from "../../../../../store/Filters/FiltersSlice";
+import { resetCheckedOrders } from "../../../../../store/Orders/OrdersSlice";
 
 PageChooser.propTypes = {
   maxPage: number,
@@ -23,7 +23,7 @@ export function PageChooser({ maxPage }) {
   };
 
   const { currentPage } = useSelector((state) => state.filters);
-
+  const ENTER_KEY_CODE = 13;
   const dispatch = useDispatch();
   const selectPage = (e) => {
     if (
@@ -33,9 +33,10 @@ export function PageChooser({ maxPage }) {
       e.target.value <= maxPage &&
       e.target.value > 0
     ) {
+      dispatch(resetCheckedOrders());
       dispatch(changeCurrentPage(Number(e.target.value)));
+      setInputValue("");
     }
-    setInputValue("");
   };
 
   return (
@@ -43,7 +44,9 @@ export function PageChooser({ maxPage }) {
       Номер страницы
       <Input
         value={inputValue}
-        isIncorrect={inputValue > maxPage || inputValue < 1}
+        isIncorrect={
+          (inputValue > maxPage || inputValue < 1) && inputValue.length > 0
+        }
         onReset={handleResetValue}
         onChange={handleChangeValue}
         onKeyDown={selectPage}

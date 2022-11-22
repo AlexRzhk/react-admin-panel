@@ -10,11 +10,12 @@ import { Header } from "../../Header/Header";
 import { Filter } from "../../Filter/Filter";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getCheckedOrdersId,
+  getCheckedOrdersID,
   getFilteredOrdersByPageAndAllOrdersLength,
 } from "../../store/Selectors/Selectors";
-import { setOrderCheck } from "../../store/Filters/FiltersSlice";
-import { getOrders } from "../../store/Orders/OrdersSlice";
+
+import { getOrders, toggleOrderCheck } from "../../store/Orders/OrdersSlice";
+import { Form } from "../../Form/Form";
 
 export function OrdersList() {
   const dispatch = useDispatch();
@@ -25,9 +26,9 @@ export function OrdersList() {
     }, 500);
   }, []);
 
-  const checkedOrders = useSelector(getCheckedOrdersId);
+  const checkedOrders = useSelector(getCheckedOrdersID);
   const handleChangeOrderCheck = (id) => {
-    dispatch(setOrderCheck(id));
+    dispatch(toggleOrderCheck(id));
   };
 
   const [filteredOrders, ordersLength] = useSelector(
@@ -45,13 +46,16 @@ export function OrdersList() {
             <OrderListTableBodyItem
               key={order.id}
               isChecked={checkedOrders.includes(order.id)}
-              onChangeCheck={() => handleChangeOrderCheck(order.id)}
+              onChangeCheck={() => {
+                handleChangeOrderCheck(order.id);
+              }}
               {...order}
             />
           ))}
         </TableBody>
         <OrderListTableFooter ordersLength={ordersLength} />
       </Table>
+      <Form />
     </div>
   );
 }

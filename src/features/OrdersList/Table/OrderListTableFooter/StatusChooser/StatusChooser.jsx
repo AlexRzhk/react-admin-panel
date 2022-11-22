@@ -6,7 +6,7 @@ import styles from "./StatusChooser.module.css";
 export function StatusChooser() {
   const statuses = Object.keys(statusNames);
 
-  const checkedOrders = useSelector((state) => state.filters.checkedOrdersId);
+  const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
 
   const dispatch = useDispatch();
 

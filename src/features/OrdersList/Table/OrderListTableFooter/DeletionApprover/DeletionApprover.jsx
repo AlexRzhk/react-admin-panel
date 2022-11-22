@@ -1,23 +1,23 @@
 import { Button } from "../../../../../elements/Button/Button";
 import { number } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrders } from "../../../../store/Orders/OrdersSlice";
 import {
-  changeCurrentPage,
-  resetAllCheckOrders,
-} from "../../../../store/Filters/FiltersSlice";
+  deleteOrders,
+  resetCheckedOrders,
+} from "../../../../store/Orders/OrdersSlice";
+import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
 
 DeletionApprover.propTypes = {
   numberOfCheckedOrders: number,
 };
 
 export function DeletionApprover({ numberOfCheckedOrders }) {
-  const checkedOrders = useSelector((state) => state.filters.checkedOrdersId);
+  const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
   const dispatch = useDispatch();
 
   const handleDeleteChosenOrders = () => {
     dispatch(deleteOrders(checkedOrders));
-    dispatch(resetAllCheckOrders());
+    dispatch(resetCheckedOrders());
     dispatch(changeCurrentPage(1));
   };
 

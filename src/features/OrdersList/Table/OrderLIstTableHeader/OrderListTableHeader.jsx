@@ -11,18 +11,17 @@ import { array } from "prop-types";
 import {
   changeActiveSorter,
   changeSorterDirection,
-  checkAllOrdersOnPage,
 } from "../../../store/Filters/FiltersSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { checkAllOrdersOnPage } from "../../../store/Orders/OrdersSlice";
 
 OrderListTableHeader.propTypes = {
   allOrdersOnPage: array,
 };
 
 export function OrderListTableHeader({ allOrdersOnPage }) {
-  const { activeSorter, isAscending, checkedOrdersId } = useSelector(
-    (state) => state.filters
-  );
+  const { activeSorter, isAscending } = useSelector((state) => state.filters);
+  const { checkedOrdersID } = useSelector((state) => state.orders);
 
   const dispatch = useDispatch();
 
@@ -36,7 +35,7 @@ export function OrderListTableHeader({ allOrdersOnPage }) {
 
   const allOrdersIdOnPage = allOrdersOnPage.map((el) => el.id);
 
-  const isAllOrdersChecked = allOrdersOnPage.length === checkedOrdersId.length;
+  const isAllOrdersChecked = allOrdersOnPage.length === checkedOrdersID.length;
 
   const handleCheckAllOrdersOnPage = () => {
     if (isAllOrdersChecked) {

@@ -6,7 +6,7 @@ import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
 import { number } from "prop-types";
 import { Pagination } from "./Pagination/Pagination";
 import { useSelector } from "react-redux";
-import { getCheckedOrdersIdLength } from "../../../store/Selectors/Selectors";
+import { getCheckedOrdersIDLength } from "../../../store/Selectors/Selectors";
 import { StatusChooser } from "./StatusChooser/StatusChooser";
 
 OrderListTableFooter.propTypes = {
@@ -14,10 +14,10 @@ OrderListTableFooter.propTypes = {
 };
 
 export function OrderListTableFooter({ ordersLength }) {
-  const numberOfCheckedOrders = useSelector(getCheckedOrdersIdLength);
+  const numberOfCheckedOrders = useSelector(getCheckedOrdersIDLength);
 
   const deleteElements = (
-    <Button icon="bin" theme="warning" size="short" isDanger={true}>
+    <Button icon="bin" size="short" isDanger={true}>
       Удалить
     </Button>
   );

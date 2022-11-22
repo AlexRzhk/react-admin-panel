@@ -9,6 +9,7 @@
   --background-color-day-light-blue: #bad8f5;
   --background-color-blue: #459df5;
   --background-color-light-blue: #85b7ee;
+  --canceled-color: 0;
 }
 
 body {
@@ -28,4 +29,5 @@ body {
   --background-color-day-light-blue: #bad8f5;
   --background-color-blue: #459df5;
   --background-color-light-blue: #85b7ee;
+  --canceled-color: 255;
 }
