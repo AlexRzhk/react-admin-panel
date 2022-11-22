@@ -40,7 +40,7 @@
   background: none;
   font-size: 13px;
   font-family: "Ubuntu", sans-serif;
-  color: var(--font-cogit addlor);
+  color: var(--font-color);
 }
 
 .area::placeholder {
