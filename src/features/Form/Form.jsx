@@ -13,6 +13,9 @@ import cn from "classnames";
 import { Input } from "../../elements/Input/Input";
 import { OrderDetail } from "./OrderDetail/OrderDetail";
 import { statusNames } from "../../App";
+import loaderStyles from "../Filter/MainFilter/MainFilter.module.css";
+
+const confirmationCode = "123";
 
 export function Form() {
   const [isSelectorDropdownVisible, setIsSelectorDropdownVisible] =
@@ -29,8 +32,9 @@ export function Form() {
     setIsApproveDropdownVisible(!isApproveDropdownVisible);
   };
 
-  const { isModalFormActive, order, confirmationCodeValue, confirmationCode } =
-    useSelector((state) => state.modal);
+  const { isModalFormActive, order, confirmationCodeValue } = useSelector(
+    (state) => state.modal
+  );
 
   const dispatch = useDispatch();
   const createHandleValueChanger =
@@ -62,24 +66,35 @@ export function Form() {
     setIsNameCorrect(checkName);
     setIsCodeCorrect(checkCode);
     if (checkName() && checkCode()) {
-      dispatch(
-        changeOrder({
-          id: order.id,
-          status: order.status,
-          fullName: order.fullName,
-        })
-      );
+      const loader = document.querySelector("." + loaderStyles.loaderOff);
+      loader.classList.add(loaderStyles.loaderOn);
+      const handler = function () {
+        dispatch(
+          changeOrder({
+            id: order.id,
+            status: order.status,
+            fullName: order.fullName,
+          })
+        );
+      };
+      setTimeout(handler, 2000);
+      setTimeout(() => {
+        console.log("cancel");
+        const loader = document.querySelector("." + loaderStyles.loaderOff);
+        loader.classList.remove(loaderStyles.loaderOn);
+      }, 2000);
       handleCloseModal();
     }
   };
 
   const errors = [];
-  if (!isCodeCorrect) {
-    errors.push("поле код заполнено неверно");
-  }
   if (!isNameCorrect) {
     errors.push("поле ФИО заполнено неверно");
   }
+  if (!isCodeCorrect) {
+    errors.push("поле код заполнено неверно");
+  }
+
   const errorMessage = errors[0] ? errors[0] : "";
 
   const triggerSelectorElement = <Button icon="arrow" />;
@@ -156,13 +171,17 @@ export function Form() {
               setIsCodeCorrect(true);
             })}
             onReset={createHandleValueReset("confirmationCodeValue")}
-            isIncorrect={!isCodeCorrect && confirmationCodeValue.length > 0}
+            isIncorrect={!isCodeCorrect > 0}
           />
         </div>
 
         <div className={styles.footer}>
           {errorMessage}
-          <Button icon="check" theme="primary" onClick={handleChangeOrder}>
+          <Button
+            icon="checkmark"
+            isSecondary={true}
+            onClick={handleChangeOrder}
+          >
             Сохранить
           </Button>
         </div>

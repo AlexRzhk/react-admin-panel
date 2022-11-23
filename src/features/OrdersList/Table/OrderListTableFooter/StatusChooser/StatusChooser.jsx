@@ -1,5 +1,8 @@
 import { statusNames } from "../../../../../App";
-import { changeOrders } from "../../../../store/Orders/OrdersSlice";
+import {
+  changeOrders,
+  resetCheckedOrders,
+} from "../../../../store/Orders/OrdersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./StatusChooser.module.css";
 
@@ -11,6 +14,7 @@ export function StatusChooser() {
   const dispatch = useDispatch();
 
   const handleChangeOrdersStatuses = (status) => {
+    dispatch(resetCheckedOrders());
     dispatch(changeOrders({ newStatus: status, checkedOrders }));
   };
 

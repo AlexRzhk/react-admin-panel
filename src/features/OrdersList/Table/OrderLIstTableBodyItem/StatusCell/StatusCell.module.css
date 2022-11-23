@@ -9,14 +9,14 @@
     var(--canceled-color),
     var(--canceled-color),
     var(--canceled-color),
-    0.5
+    1
   );
   fill-opacity: 0.5;
   stroke: rgba(
     var(--canceled-color),
     var(--canceled-color),
     var(--canceled-color),
-    0.5
+    1
   );
   stroke-opacity: 0.5;
   color: rgba(

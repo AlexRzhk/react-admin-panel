@@ -15,12 +15,12 @@ export const orders = [
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353002,
-    data: `01.02.2021, 05:15`,
+    data: `02.01.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 3,
     positions: [
@@ -29,12 +29,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `4500`,
+    sum: `15000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103003,
-    data: `01.03.2021, 08:04`,
+    data: `03.01.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -42,12 +42,12 @@ export const orders = [
       { vendorCode: "ars54", name: "Волшебный декабрь", price: 1900 },
     ],
     loyalty: "новичок",
-    sum: `3400  `,
+    sum: `3400`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1102004,
-    data: `01.04.2021, 08:09`,
+    data: `04.01.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -55,24 +55,24 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924005,
-    data: `01.05.2021, 13:32`,
+    data: `05.01.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `1800  `,
+    sum: `1800`,
     fullName: `Александрова Юлия Никитична`,
   },
   {
     id: 1103006,
-    data: `01.06.2021, 08:04`,
+    data: `06.01.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -82,7 +82,7 @@ export const orders = [
   },
   {
     id: 1103007,
-    data: `01.07.2021, 08:04`,
+    data: `07.01.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -90,12 +90,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104008,
-    data: `01.08.2021, 08:04`,
+    data: `08.01.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -103,12 +103,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113009,
-    data: `01.09.2021, 08:04`,
+    data: `09.01.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -116,12 +116,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203010,
-    data: `01.10.2021, 08:04`,
+    data: `10.01.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -129,12 +129,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133011,
-    data: `01.11.2021, 08:04`,
+    data: `11.01.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [
@@ -146,7 +146,7 @@ export const orders = [
   },
   {
     id: 1103012,
-    data: `01.12.2021, 16:12`,
+    data: `12.01.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -156,17 +156,17 @@ export const orders = [
   },
   {
     id: 1103013,
-    data: `01.13.2021, 13:15`,
+    data: `13.01.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103014,
-    data: `01.14.2021, 12:04`,
+    data: `14.01.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -174,12 +174,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3500  `,
+    sum: `3500`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1103015,
-    data: `01.15.2021, 07:04`,
+    data: `15.01.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -187,23 +187,23 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
   {
     id: 1270016,
-    data: `01.16.2021, 18:00`,
+    data: `16.01.2021, 18:00`,
     status: STATUSES.NEW,
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353017,
-    data: `01.17.2021, 05:15`,
+    data: `17.01.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -211,12 +211,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103018,
-    data: `01.18.2021, 08:04`,
+    data: `18.01.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -224,12 +224,12 @@ export const orders = [
       { vendorCode: "ars54", name: "Волшебный декабрь", price: 1900 },
     ],
     loyalty: "новичок",
-    sum: `3400  `,
+    sum: `3400`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1102019,
-    data: `01.19.2021, 08:09`,
+    data: `19.01.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -237,24 +237,24 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924020,
-    data: `01.20.2021, 13:32`,
+    data: `20.01.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `1800  `,
+    sum: `1800`,
     fullName: `Александрова Юлия Никитична`,
   },
   {
     id: 1103021,
-    data: `01.21.2021, 08:04`,
+    data: `21.01.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -264,7 +264,7 @@ export const orders = [
   },
   {
     id: 1103022,
-    data: `01.22.2021, 08:04`,
+    data: `22.01.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -272,12 +272,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104023,
-    data: `01.23.2021, 08:04`,
+    data: `23.01.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -285,12 +285,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113024,
-    data: `01.24.2021, 08:04`,
+    data: `24.01.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -298,12 +298,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203025,
-    data: `01.25.2021, 08:04`,
+    data: `25.01.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -311,12 +311,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133026,
-    data: `01.26.2021, 08:04`,
+    data: `26.01.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -326,7 +326,7 @@ export const orders = [
   },
   {
     id: 1103027,
-    data: `01.27.2021, 16:12`,
+    data: `27.01.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -336,17 +336,17 @@ export const orders = [
   },
   {
     id: 1103028,
-    data: `01.28.2021, 13:15`,
+    data: `28.01.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103029,
-    data: `01.29.2021, 12:04`,
+    data: `29.01.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -354,12 +354,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3500  `,
+    sum: `3500`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1103030,
-    data: `01.30.2021, 07:04`,
+    data: `30.01.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -367,23 +367,23 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
   {
     id: 1270031,
-    data: `01.31.2021, 18:00`,
+    data: `31.01.2021, 18:00`,
     status: STATUSES.NEW,
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353032,
-    data: `02.01.2021, 05:15`,
+    data: `01.02.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -391,7 +391,7 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
@@ -409,7 +409,7 @@ export const orders = [
   },
   {
     id: 1102034,
-    data: `02.03.2021, 08:09`,
+    data: `03.02.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -417,12 +417,12 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924035,
-    data: `02.04.2021, 13:32`,
+    data: `04.02.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
@@ -434,7 +434,7 @@ export const orders = [
   },
   {
     id: 1103036,
-    data: `02.05.2021, 08:04`,
+    data: `05.02.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -444,7 +444,7 @@ export const orders = [
   },
   {
     id: 1103037,
-    data: `02.06.2021, 08:04`,
+    data: `06.02.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -452,12 +452,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104038,
-    data: `02.07.2021, 08:04`,
+    data: `07.02.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -465,12 +465,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113039,
-    data: `02.08.2021, 08:04`,
+    data: `08.02.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -478,12 +478,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203040,
-    data: `02.09.2021, 08:04`,
+    data: `09.02.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -491,12 +491,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133041,
-    data: `02.10.2021, 08:04`,
+    data: `10.02.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -506,7 +506,7 @@ export const orders = [
   },
   {
     id: 1103042,
-    data: `02.11.2021, 16:12`,
+    data: `11.02.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -516,17 +516,17 @@ export const orders = [
   },
   {
     id: 1103043,
-    data: `02.12.2021, 13:15`,
+    data: `12.02.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103044,
-    data: `02.13.2021, 12:04`,
+    data: `13.02.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -539,7 +539,7 @@ export const orders = [
   },
   {
     id: 1103045,
-    data: `02.14.2021, 07:04`,
+    data: `14.02.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -547,23 +547,23 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
   {
     id: 1270046,
-    data: `02.15.2021, 18:00`,
+    data: `15.02.2021, 18:00`,
     status: STATUSES.NEW,
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353047,
-    data: `02.16.2021, 05:15`,
+    data: `16.02.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -571,12 +571,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103048,
-    data: `02.17.2021, 08:04`,
+    data: `17.02.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -589,7 +589,7 @@ export const orders = [
   },
   {
     id: 1102049,
-    data: `02.18.2021, 08:09`,
+    data: `18.02.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -597,12 +597,12 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924050,
-    data: `02.19.2021, 13:32`,
+    data: `19.02.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
@@ -614,7 +614,7 @@ export const orders = [
   },
   {
     id: 1103051,
-    data: `02.20.2021, 08:04`,
+    data: `20.02.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -624,7 +624,7 @@ export const orders = [
   },
   {
     id: 1103052,
-    data: `02.21.2021, 08:04`,
+    data: `21.02.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -632,12 +632,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104053,
-    data: `02.22.2021, 08:04`,
+    data: `22.02.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -645,12 +645,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113054,
-    data: `02.23.2021, 08:04`,
+    data: `23.02.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -658,12 +658,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203055,
-    data: `02.24.2021, 08:04`,
+    data: `24.02.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -671,12 +671,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133056,
-    data: `02.25.2021, 08:04`,
+    data: `25.02.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -686,7 +686,7 @@ export const orders = [
   },
   {
     id: 1103057,
-    data: `02.26.2021, 16:12`,
+    data: `26.02.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -696,17 +696,17 @@ export const orders = [
   },
   {
     id: 1103058,
-    data: `02.27.2021, 13:15`,
+    data: `27.02.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103059,
-    data: `02.28.2021, 12:04`,
+    data: `28.02.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -719,7 +719,7 @@ export const orders = [
   },
   {
     id: 1103060,
-    data: `03.01.2021, 07:04`,
+    data: `01.03.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -727,18 +727,18 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
   {
     id: 1270061,
-    data: `03.02.2021, 18:00`,
+    data: `02.03.2021, 18:00`,
     status: STATUSES.NEW,
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
@@ -751,12 +751,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103063,
-    data: `03.04.2021, 08:04`,
+    data: `04.03.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -769,7 +769,7 @@ export const orders = [
   },
   {
     id: 1102064,
-    data: `03.05.2021, 08:09`,
+    data: `05.03.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -777,12 +777,12 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924065,
-    data: `03.06.2021, 13:32`,
+    data: `06.03.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
@@ -794,7 +794,7 @@ export const orders = [
   },
   {
     id: 1103066,
-    data: `03.07.2021, 08:04`,
+    data: `07.03.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -804,7 +804,7 @@ export const orders = [
   },
   {
     id: 1103067,
-    data: `03.08.2021, 08:04`,
+    data: `08.03.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -812,12 +812,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104068,
-    data: `03.09.2021, 08:04`,
+    data: `09.03.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -825,12 +825,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113069,
-    data: `03.10.2021, 08:04`,
+    data: `10.03.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -838,12 +838,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203070,
-    data: `03.11.2021, 08:04`,
+    data: `11.03.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -851,12 +851,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133071,
-    data: `03.12.2021, 08:04`,
+    data: `12.03.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -866,7 +866,7 @@ export const orders = [
   },
   {
     id: 1103072,
-    data: `03.13.2021, 16:12`,
+    data: `13.03.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -876,17 +876,17 @@ export const orders = [
   },
   {
     id: 1103073,
-    data: `03.14.2021, 13:15`,
+    data: `14.03.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103074,
-    data: `03.15.2021, 12:04`,
+    data: `15.03.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -899,7 +899,7 @@ export const orders = [
   },
   {
     id: 1103075,
-    data: `03.16.2021, 07:04`,
+    data: `16.03.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -907,23 +907,23 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
   {
     id: 1270076,
-    data: `03.17.2021, 18:00`,
+    data: `17.03.2021, 18:00`,
     status: STATUSES.NEW,
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353077,
-    data: `03.18.2021, 05:15`,
+    data: `18.03.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -931,12 +931,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103078,
-    data: `03.19.2021, 08:04`,
+    data: `19.03.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -949,7 +949,7 @@ export const orders = [
   },
   {
     id: 1102079,
-    data: `03.20.2021, 08:09`,
+    data: `20.03.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -957,12 +957,12 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924080,
-    data: `03.21.2021, 13:32`,
+    data: `21.03.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
@@ -974,7 +974,7 @@ export const orders = [
   },
   {
     id: 1103081,
-    data: `03.22.2021, 08:04`,
+    data: `22.03.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -984,7 +984,7 @@ export const orders = [
   },
   {
     id: 1103082,
-    data: `03.23.2021, 08:04`,
+    data: `23.03.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -992,12 +992,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104083,
-    data: `03.24.2021, 08:04`,
+    data: `24.03.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -1005,12 +1005,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113084,
-    data: `03.25.2021, 08:04`,
+    data: `25.03.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -1018,12 +1018,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203085,
-    data: `03.26.2021, 08:04`,
+    data: `26.03.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -1031,12 +1031,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133086,
-    data: `03.27.2021, 08:04`,
+    data: `27.03.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -1046,7 +1046,7 @@ export const orders = [
   },
   {
     id: 1103087,
-    data: `03.28.2021, 16:12`,
+    data: `28.03.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -1056,17 +1056,17 @@ export const orders = [
   },
   {
     id: 1103088,
-    data: `04.01.2021, 13:15`,
+    data: `01.04.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103089,
-    data: `04.02.2021, 12:04`,
+    data: `02.04.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -1079,7 +1079,7 @@ export const orders = [
   },
   {
     id: 1103090,
-    data: `04.03.2021, 07:04`,
+    data: `03.04.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -1087,7 +1087,7 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 
@@ -1098,12 +1098,12 @@ export const orders = [
     positionCount: 1,
     positions: [{ vendorCode: "ars51", name: "Книга Ночи", price: 1500 }],
     loyalty: "новичок",
-    sum: `1500  `,
+    sum: `1500`,
     fullName: `Чернышев Филипп Семёнович`,
   },
   {
     id: 2353092,
-    data: `04.05.2021, 05:15`,
+    data: `05.04.2021, 05:15`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -1111,12 +1111,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 1103093,
-    data: `04.06.2021, 08:04`,
+    data: `06.04.2021, 08:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -1129,7 +1129,7 @@ export const orders = [
   },
   {
     id: 1102094,
-    data: `04.07.2021, 08:09`,
+    data: `07.04.2021, 08:09`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -1137,12 +1137,12 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Филиппов Степан Васильевич`,
   },
   {
     id: 6924095,
-    data: `04.08.2021, 13:32`,
+    data: `08.04.2021, 13:32`,
     status: STATUSES.DONE,
     positionCount: 1,
     positions: [
@@ -1154,7 +1154,7 @@ export const orders = [
   },
   {
     id: 1103096,
-    data: `04.09.2021, 08:04`,
+    data: `09.04.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -1164,7 +1164,7 @@ export const orders = [
   },
   {
     id: 1103097,
-    data: `04.10.2021, 08:04`,
+    data: `10.04.2021, 08:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -1172,12 +1172,12 @@ export const orders = [
       { vendorCode: "ars57", name: "Горизонт Событий", price: 2000 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Зверева Арина Николаевна`,
   },
   {
     id: 1104098,
-    data: `04.11.2021, 08:04`,
+    data: `11.04.2021, 08:04`,
     status: STATUSES.CALCULATING,
     positionCount: 2,
     positions: [
@@ -1185,12 +1185,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3800  `,
+    sum: `3800`,
     fullName: `Васильев Вадим Даниилович`,
   },
   {
     id: 1113099,
-    data: `04.12.2021, 08:04`,
+    data: `12.04.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -1198,12 +1198,12 @@ export const orders = [
       { vendorCode: "ars56", name: "Испытание ядом", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1203100,
-    data: `04.13.2021, 08:04`,
+    data: `13.04.2021, 08:04`,
     status: STATUSES.POSTPONED,
     positionCount: 2,
     positions: [
@@ -1211,12 +1211,12 @@ export const orders = [
       { vendorCode: "ars51", name: "Книга Ночи", price: 1500 },
     ],
     loyalty: "новичок",
-    sum: `3000  `,
+    sum: `3000`,
     fullName: `Тиханова Алина Давидовна`,
   },
   {
     id: 1133101,
-    data: `04.14.2021, 08:04`,
+    data: `14.04.2021, 08:04`,
     status: STATUSES.CANCELED,
     positionCount: "-",
     positions: [],
@@ -1226,7 +1226,7 @@ export const orders = [
   },
   {
     id: 1103102,
-    data: `04.15.2021, 16:12`,
+    data: `15.04.2021, 16:12`,
     status: STATUSES.CANCELED,
     positionCount: `-`,
     positions: [],
@@ -1236,17 +1236,17 @@ export const orders = [
   },
   {
     id: 1103103,
-    data: `04.16.2021, 13:15`,
+    data: `16.04.2021, 13:15`,
     status: STATUSES.POSTPONED,
     positionCount: 1,
     positions: [{ vendorCode: "ars57", name: "Горизонт Событий", price: 2000 }],
     loyalty: "новичок",
-    sum: `2000  `,
+    sum: `2000`,
     fullName: `Судакова Алина Давидовна`,
   },
   {
     id: 1103104,
-    data: `04.17.2021, 12:04`,
+    data: `17.04.2021, 12:04`,
     status: STATUSES.CONFIRM,
     positionCount: 2,
     positions: [
@@ -1259,7 +1259,7 @@ export const orders = [
   },
   {
     id: 1103105,
-    data: `04.18.2021, 07:04`,
+    data: `18.04.2021, 07:04`,
     status: STATUSES.NEW,
     positionCount: 2,
     positions: [
@@ -1267,7 +1267,7 @@ export const orders = [
       { vendorCode: "ars55", name: "Рецепты Средиземья", price: 1800 },
     ],
     loyalty: "новичок",
-    sum: `3300  `,
+    sum: `3300`,
     fullName: `Зверева Алина Давидовна`,
   },
 ];

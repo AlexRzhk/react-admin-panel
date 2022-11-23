@@ -11,10 +11,16 @@ const initialState = {
   filterSumFromValue: "",
   filterSumToValue: "",
 
+  curFilterDateFromValue: "",
+  curFilterDateToValue: "",
+  curCheckedStatuses: [],
+  curFilterSumFromValue: "",
+  curFilterSumToValue: "",
+
   activeSorter: "date",
   isAscending: true,
 
-  pageLimit: 10,
+  pageLimit: 20,
   currentPage: 1,
 };
 
@@ -32,7 +38,6 @@ const filtersSlice = createSlice({
     changeFilterDateFromValue(state, action) {
       return {
         ...state,
-        isAdditionalFiltersActive: false,
         filterDateFromValue: action.payload,
       };
     },
@@ -40,7 +45,6 @@ const filtersSlice = createSlice({
     changeFilterDateToValue(state, action) {
       return {
         ...state,
-        isAdditionalFiltersActive: false,
         filterDateToValue: action.payload,
       };
     },
@@ -49,7 +53,6 @@ const filtersSlice = createSlice({
       if (state.checkedStatuses.includes(action.payload)) {
         return {
           ...state,
-          isAdditionalFiltersActive: false,
           checkedStatuses: state.checkedStatuses.filter(
             (status) => status !== action.payload
           ),
@@ -57,7 +60,6 @@ const filtersSlice = createSlice({
       }
       return {
         ...state,
-        isAdditionalFiltersActive: false,
         checkedStatuses: [...state.checkedStatuses, action.payload],
       };
     },
@@ -65,20 +67,26 @@ const filtersSlice = createSlice({
     changeFilterSumFromValue(state, action) {
       return {
         ...state,
-        isAdditionalFiltersActive: false,
         filterSumFromValue: action.payload,
       };
     },
     changeFilterSumToValue(state, action) {
       return {
         ...state,
-        isAdditionalFiltersActive: false,
         filterSumToValue: action.payload,
       };
     },
 
     activateAdditionalFilters(state) {
-      return { ...state, isAdditionalFiltersActive: true };
+      return {
+        ...state,
+        isAdditionalFiltersActive: true,
+        curFilterDateFromValue: state.filterDateFromValue,
+        curFilterDateToValue: state.filterDateToValue,
+        curCheckedStatuses: state.checkedStatuses,
+        curFilterSumFromValue: state.filterSumFromValue,
+        curFilterSumToValue: state.filterSumToValue,
+      };
     },
 
     changeActiveSorter(state, action) {

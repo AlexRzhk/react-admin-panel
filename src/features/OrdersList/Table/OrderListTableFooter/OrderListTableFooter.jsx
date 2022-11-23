@@ -8,6 +8,8 @@ import { Pagination } from "./Pagination/Pagination";
 import { useSelector } from "react-redux";
 import { getCheckedOrdersIDLength } from "../../../store/Selectors/Selectors";
 import { StatusChooser } from "./StatusChooser/StatusChooser";
+import cn from "classnames";
+import { useState } from "react";
 
 OrderListTableFooter.propTypes = {
   ordersLength: number,
@@ -16,6 +18,18 @@ OrderListTableFooter.propTypes = {
 export function OrderListTableFooter({ ordersLength }) {
   const numberOfCheckedOrders = useSelector(getCheckedOrdersIDLength);
 
+  const [isDeleteDropdownVisible, setIsDeleteDropdownVisible] = useState(false);
+
+  const [isStatusChangeDropdownVisible, setIsStatusChangeDropdownVisible] =
+    useState(false);
+  const toggleStatusChangeDropdown = () => {
+    setIsStatusChangeDropdownVisible(!isStatusChangeDropdownVisible);
+    setIsDeleteDropdownVisible(false);
+  };
+  const toggleDeleteDropdown = () => {
+    setIsDeleteDropdownVisible(!isDeleteDropdownVisible);
+    setIsStatusChangeDropdownVisible(false);
+  };
   const deleteElements = (
     <Button icon="bin" size="short" isDanger={true}>
       Удалить
@@ -27,14 +41,19 @@ export function OrderListTableFooter({ ordersLength }) {
       Изменить статус
     </Button>
   );
+  const leftBlockStyle = cn(styles.block, {
+    [styles.invisible]: numberOfCheckedOrders === 0,
+  });
 
   return (
     <TableFooter className={styles._}>
-      <div className={styles.block}>
+      <div className={leftBlockStyle}>
         <span>Выбрано записей: {numberOfCheckedOrders}</span>
         <MyDropdown
           trigger={elementChooseStatus}
           childrenClassName={styles.statusChooser}
+          externalVisibilitySetter={toggleStatusChangeDropdown}
+          externalVisibilityValue={isStatusChangeDropdownVisible}
         >
           <StatusChooser />
         </MyDropdown>
@@ -42,10 +61,16 @@ export function OrderListTableFooter({ ordersLength }) {
         <MyDropdown
           trigger={deleteElements}
           childrenClassName={styles.dropdown}
+          externalVisibilityValue={isDeleteDropdownVisible}
+          externalVisibilitySetter={toggleDeleteDropdown}
         >
-          <DeletionApprover numberOfCheckedOrders={numberOfCheckedOrders} />
+          <DeletionApprover
+            numberOfCheckedOrders={numberOfCheckedOrders}
+            textClassName={styles.text}
+          />
         </MyDropdown>
       </div>
+      <div></div>
       <div className={styles.block}>
         <Pagination ordersLength={ordersLength} />
       </div>

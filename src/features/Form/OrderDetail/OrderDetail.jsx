@@ -12,7 +12,6 @@ export function OrderDetail() {
   const order = useSelector((state) => {
     return state.modal.order;
   });
-  console.log(order);
   let index = 0;
 
   const elements = order.positions ? (

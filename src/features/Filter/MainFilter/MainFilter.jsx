@@ -28,7 +28,7 @@ export function MainFilter({
   const searchbarValue = useSelector(getSearchbarValue);
 
   const handleChangeSearchbar = ({ target: { value } }) => {
-    dispatch(changeSearchbar(value));
+    dispatch(changeSearchbar(value.trim()));
     dispatch(resetCheckedOrders());
   };
 
@@ -63,7 +63,9 @@ export function MainFilter({
         <Button onClick={handleResetAllFilters}>Сбросить фильтры</Button>
       </div>
       <div>
-        <Button icon="refresh">Загрузка</Button>
+        <Button icon="refresh" iconClassName={styles.loaderOff}>
+          Загрузка
+        </Button>
       </div>
     </div>
   );

@@ -110,6 +110,8 @@
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
+  font-size: 13px;
+  font-family: "Ubuntu", sans-serif;
 
   color: var(--warning-color);
 

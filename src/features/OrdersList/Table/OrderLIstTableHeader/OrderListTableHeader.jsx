@@ -35,7 +35,9 @@ export function OrderListTableHeader({ allOrdersOnPage }) {
 
   const allOrdersIdOnPage = allOrdersOnPage.map((el) => el.id);
 
-  const isAllOrdersChecked = allOrdersOnPage.length === checkedOrdersID.length;
+  const isAllOrdersChecked =
+    allOrdersOnPage.length === checkedOrdersID.length &&
+    checkedOrdersID.length !== 0;
 
   const handleCheckAllOrdersOnPage = () => {
     if (isAllOrdersChecked) {

@@ -5,7 +5,6 @@ const initialState = {
   order: {},
 
   confirmationCodeValue: "",
-  confirmationCode: "123",
 };
 
 const formSlice = createSlice({

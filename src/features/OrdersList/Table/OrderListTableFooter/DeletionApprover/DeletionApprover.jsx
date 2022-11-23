@@ -1,5 +1,5 @@
 import { Button } from "../../../../../elements/Button/Button";
-import { number } from "prop-types";
+import { number, string } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteOrders,
@@ -9,9 +9,10 @@ import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
 
 DeletionApprover.propTypes = {
   numberOfCheckedOrders: number,
+  textClassName: string,
 };
 
-export function DeletionApprover({ numberOfCheckedOrders }) {
+export function DeletionApprover({ numberOfCheckedOrders, textClassName }) {
   const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
   const dispatch = useDispatch();
 
@@ -25,7 +26,7 @@ export function DeletionApprover({ numberOfCheckedOrders }) {
 
   return (
     <>
-      {question}
+      <span className={textClassName}>{question}</span>
       <Button size="short" isFullWidth onClick={handleDeleteChosenOrders}>
         Удалить
       </Button>
