@@ -59,7 +59,9 @@ export function OrderListTableFooter({ ordersLength }) {
           externalVisibilitySetter={toggleStatusChangeDropdown}
           externalVisibilityValue={isStatusChangeDropdownVisible}
         >
-          <StatusChooser />
+          <StatusChooser
+            externalVisibilitySetter={setIsStatusChangeDropdownVisible}
+          />
         </MyDropdown>
 
         <MyDropdown

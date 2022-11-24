@@ -8,10 +8,10 @@ import styles from "./StatusChooser.module.css";
 import { func } from "prop-types";
 
 StatusChooser.propTypes = {
-  close: func,
+  externalVisibilitySetter: func,
 };
 
-export function StatusChooser() {
+export function StatusChooser({ externalVisibilitySetter }) {
   const statuses = Object.keys(statusNames);
 
   const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
@@ -21,6 +21,7 @@ export function StatusChooser() {
   const handleChangeOrdersStatuses = (status) => {
     dispatch(resetCheckedOrders());
     dispatch(changeOrders({ newStatus: status, checkedOrders }));
+    externalVisibilitySetter(false);
   };
 
   return (
