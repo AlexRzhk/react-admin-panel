@@ -23,6 +23,7 @@ export function DeletionApprover({
   const handleDeleteChosenOrders = () => {
     dispatch(deleteOrders(checkedOrders));
     dispatch(resetCheckedOrders());
+    close();
   };
 
   let question = getRightQuestion(numberOfCheckedOrders);
