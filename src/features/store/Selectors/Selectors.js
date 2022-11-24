@@ -1,20 +1,32 @@
 export const getCheckedStatuses = (state) => state.filters.checkedStatuses;
 export const getSearchbarValue = (state) => state.filters.searchbar;
-export const getCheckedOrdersId = (state) => state.filters.checkedOrdersId;
-export const getCheckedOrdersIdLength = (state) =>
-  state.filters.checkedOrdersId.length;
 
-const getObjectDate = (dateString) => {
-  return new Date(dateString);
+export const getCheckedOrdersID = (state) => state.orders.checkedOrdersID;
+export const getCheckedOrdersIDLength = (state) =>
+  state.orders.checkedOrdersID.length;
+
+const parseDate = (dateString) => {
+  let dateAndTime = dateString.split(",");
+  let month = dateAndTime[0].split(".")[1];
+  let day = dateAndTime[0].split(".")[0];
+  let year = dateAndTime[0].split(".")[2];
+  let date = new Date(+year, month - 1, +day);
+  return date;
 };
 
 const getSorter = (key, isAscending) => {
-  const direction = isAscending ? -1 : 1;
+  const direction = !isAscending ? 1 : -1;
   if (key === "positionCount" || key === "sum") {
     return (a, b) => {
       const symbol = "-";
-      const firstElem = a[key] === symbol ? 0 : a[key];
-      const secondElem = b[key] === symbol ? 0 : b[key];
+      const firstElem = a[key] === symbol ? 0 : +a[key];
+      const secondElem = b[key] === symbol ? 0 : +b[key];
+      return firstElem > secondElem ? direction : -direction;
+    };
+  } else if (key === "date") {
+    return (a, b) => {
+      const firstElem = parseDate(a["data"]);
+      const secondElem = parseDate(b["data"]);
       return firstElem > secondElem ? direction : -direction;
     };
   } else {
@@ -26,14 +38,22 @@ const sortByKey = (key, isAscending, array) => {
   return array.sort(getSorter(key, isAscending));
 };
 
+export const getOrderByID = (id) => {
+  return (state) => {
+    let orders = [...state.orders.allOrders];
+    orders = orders.filter((order) => order.id === id);
+    return orders[0];
+  };
+};
+
 export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   const {
     searchbar,
-    filterDateFromValue,
-    filterDateToValue,
-    checkedStatuses,
-    filterSumFromValue,
-    filterSumToValue,
+    curFilterDateFromValue,
+    curFilterDateToValue,
+    curCheckedStatuses,
+    curFilterSumFromValue,
+    curFilterSumToValue,
     isAdditionalFiltersActive,
     activeSorter,
     isAscending,
@@ -42,7 +62,6 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   } = state.filters;
 
   let filteredOrders = [...state.orders.allOrders];
-
   if (searchbar) {
     filteredOrders = filteredOrders.filter((order) => {
       return (
@@ -53,31 +72,31 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   }
 
   if (isAdditionalFiltersActive) {
-    if (filterSumFromValue) {
+    if (curFilterSumFromValue) {
       filteredOrders = filteredOrders.filter(
-        (order) => order.sum >= filterSumFromValue
+        (order) => +order.sum >= +curFilterSumFromValue
       );
     }
-    if (filterSumToValue) {
-      filteredOrders = filteredOrders.filter(
-        (order) => order.sum <= filterSumToValue
-      );
-    }
-
-    if (filterDateFromValue) {
-      filteredOrders = filteredOrders.filter(
-        (order) => new Date(order.data) >= getObjectDate(filterDateFromValue)
-      );
-    }
-    if (filterDateToValue) {
+    if (curFilterSumToValue) {
       filteredOrders = filteredOrders.filter((order) => {
-        return new Date(order.data) <= getObjectDate(filterDateToValue);
+        return +order.sum <= +curFilterSumToValue;
       });
     }
 
-    if (checkedStatuses.length > 0) {
+    if (curFilterDateFromValue) {
+      filteredOrders = filteredOrders.filter(
+        (order) => parseDate(order.data) >= parseDate(curFilterDateFromValue)
+      );
+    }
+    if (curFilterDateToValue) {
+      filteredOrders = filteredOrders.filter((order) => {
+        return parseDate(order.data) <= parseDate(curFilterDateToValue);
+      });
+    }
+
+    if (curCheckedStatuses.length > 0) {
       filteredOrders = filteredOrders.filter((order) =>
-        checkedStatuses.includes(order.status)
+        curCheckedStatuses.includes(order.status)
       );
     }
   }
@@ -88,9 +107,9 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
     filteredOrders
   );
 
-  const ordersByPage = filteredAndSorted.filter(
-    (order, index) =>
-      index >= pageLimit * (currentPage - 1) && index < pageLimit * currentPage
+  const ordersByPage = filteredAndSorted.slice(
+    pageLimit * (currentPage - 1),
+    pageLimit * currentPage
   );
 
   return [ordersByPage, filteredAndSorted.length];

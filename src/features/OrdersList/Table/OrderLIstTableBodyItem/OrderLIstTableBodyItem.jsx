@@ -30,6 +30,7 @@ export function OrderListTableBodyItem({
   fullName,
 }) {
   const RUB_SYMBOL = <span>&#8381;</span>;
+
   return (
     <TableRow className={cn(styles.bodyRow, { [styles.checked]: isChecked })}>
       <TableCell className={rowStyles.checkbox}>

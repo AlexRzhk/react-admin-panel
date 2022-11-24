@@ -9,11 +9,8 @@ import styles from "./OrdersLIst.module.css";
 import { Header } from "../../Header/Header";
 import { Filter } from "../../Filter/Filter";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCheckedOrdersId,
-  getFilteredOrdersByPageAndAllOrdersLength,
-} from "../../store/Selectors/Selectors";
-import { setOrderCheck } from "../../store/Filters/FiltersSlice";
+import { getFilteredOrdersByPageAndAllOrdersLength } from "../../store/Selectors/Selectors";
+
 import { getOrders } from "../../store/Orders/OrdersSlice";
 
 export function OrdersList() {
@@ -24,11 +21,6 @@ export function OrdersList() {
       dispatch(getOrders(orders));
     }, 500);
   }, []);
-
-  const checkedOrders = useSelector(getCheckedOrdersId);
-  const handleChangeOrderCheck = (id) => {
-    dispatch(setOrderCheck(id));
-  };
 
   const [filteredOrders, ordersLength] = useSelector(
     getFilteredOrdersByPageAndAllOrdersLength
@@ -44,8 +36,7 @@ export function OrdersList() {
           {filteredOrders.map((order) => (
             <OrderListTableBodyItem
               key={order.id}
-              isChecked={checkedOrders.includes(order.id)}
-              onChangeCheck={() => handleChangeOrderCheck(order.id)}
+              isChecked={false}
               {...order}
             />
           ))}
