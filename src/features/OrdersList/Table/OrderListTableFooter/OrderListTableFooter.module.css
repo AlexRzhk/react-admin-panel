@@ -12,6 +12,10 @@
   gap: 1rem;
 }
 
+.invisible {
+  display: none;
+}
+
 .dropdown {
   left: 0;
   bottom: 1.75rem;
@@ -31,4 +35,9 @@
 
   width: 10rem;
   height: 13rem;
+}
+
+.text {
+  font-size: 13px;
+  color: var(--font-color);
 }

@@ -7,22 +7,16 @@ import { TableCell } from "../../../../elements/Table/TableCell/TableCell";
 import { Checkbox } from "../../../../elements/Checkbox/Checkbox";
 import { TableHeaderCell } from "../../../../elements/Table/TableHeaderCell/TableHeaderCell";
 import { Icon } from "../../../../elements/icons/Icon";
-import { array } from "prop-types";
 import {
   changeActiveSorter,
   changeSorterDirection,
-  checkAllOrdersOnPage,
 } from "../../../store/Filters/FiltersSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-OrderListTableHeader.propTypes = {
-  allOrdersOnPage: array,
-};
+OrderListTableHeader.propTypes = {};
 
-export function OrderListTableHeader({ allOrdersOnPage }) {
-  const { activeSorter, isAscending, checkedOrdersId } = useSelector(
-    (state) => state.filters
-  );
+export function OrderListTableHeader() {
+  const { activeSorter, isAscending } = useSelector((state) => state.filters);
 
   const dispatch = useDispatch();
 
@@ -34,26 +28,11 @@ export function OrderListTableHeader({ allOrdersOnPage }) {
     }
   };
 
-  const allOrdersIdOnPage = allOrdersOnPage.map((el) => el.id);
-
-  const isAllOrdersChecked = allOrdersOnPage.length === checkedOrdersId.length;
-
-  const handleCheckAllOrdersOnPage = () => {
-    if (isAllOrdersChecked) {
-      dispatch(checkAllOrdersOnPage([]));
-    } else {
-      dispatch(checkAllOrdersOnPage(allOrdersIdOnPage));
-    }
-  };
-
   return (
     <TableHeader>
       <TableRow>
         <TableCell className={rowStyles.checkbox}>
-          <Checkbox
-            checked={isAllOrdersChecked}
-            onChange={() => handleCheckAllOrdersOnPage()}
-          />
+          <Checkbox checked={false} />
         </TableCell>
 
         <TableCell className={rowStyles.index}>#</TableCell>

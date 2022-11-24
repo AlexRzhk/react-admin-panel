@@ -1,35 +1,39 @@
 import { Button } from "../../../../../elements/Button/Button";
-import { number } from "prop-types";
+import { func, number, string } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrders } from "../../../../store/Orders/OrdersSlice";
 import {
-  changeCurrentPage,
-  resetAllCheckOrders,
-} from "../../../../store/Filters/FiltersSlice";
+  deleteOrders,
+  resetCheckedOrders,
+} from "../../../../store/Orders/OrdersSlice";
 
 DeletionApprover.propTypes = {
   numberOfCheckedOrders: number,
+  textClassName: string,
+  close: func,
 };
 
-export function DeletionApprover({ numberOfCheckedOrders }) {
-  const checkedOrders = useSelector((state) => state.filters.checkedOrdersId);
+export function DeletionApprover({
+  numberOfCheckedOrders,
+  textClassName,
+  close,
+}) {
+  const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
   const dispatch = useDispatch();
 
   const handleDeleteChosenOrders = () => {
     dispatch(deleteOrders(checkedOrders));
-    dispatch(resetAllCheckOrders());
-    dispatch(changeCurrentPage(1));
+    dispatch(resetCheckedOrders());
   };
 
   let question = getRightQuestion(numberOfCheckedOrders);
 
   return (
     <>
-      {question}
+      <span className={textClassName}>{question}</span>
       <Button size="short" isFullWidth onClick={handleDeleteChosenOrders}>
         Удалить
       </Button>
-      <Button size="short" isSecondary={true} isFullWidth>
+      <Button size="short" isSecondary={true} isFullWidth onClick={close}>
         Отмена
       </Button>
     </>

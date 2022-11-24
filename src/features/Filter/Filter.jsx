@@ -8,23 +8,23 @@ import { Button } from "../../elements/Button/Button.jsx";
 import { AdditionalFilter } from "./AdditionalFilter/AdditionalFilter.jsx";
 import cn from "classnames";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { activateAdditionalFilters } from "../store/Filters/FiltersSlice";
+import { changeCurrentPage } from "../store/Filters/FiltersSlice";
+
 Filter.propTypes = {
   className: string,
 };
 
 export function Filter({ className }) {
+  const firstPage = 1;
   const [additionalFilterVisibility, setAdditionalFilterVisibility] =
     useState(false);
-
-  const isAdditionalFiltersActive = useSelector(
-    (state) => state.filters.isAdditionalFiltersActive
-  );
 
   const dispatch = useDispatch();
 
   const handleActivateAdditionalFilters = () => {
+    dispatch(changeCurrentPage(firstPage));
     dispatch(activateAdditionalFilters());
   };
 
@@ -44,12 +44,7 @@ export function Filter({ className }) {
           <DateFilter />
           <StatusFilterContainer />
           <SumFilter />
-          <Button
-            onClick={handleActivateAdditionalFilters}
-            isSecondary={isAdditionalFiltersActive}
-          >
-            Применить
-          </Button>
+          <Button onClick={handleActivateAdditionalFilters}>Применить</Button>
         </AdditionalFilter>
       )}
     </div>
