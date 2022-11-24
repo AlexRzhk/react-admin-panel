@@ -66,7 +66,7 @@ export function Form() {
     setIsNameCorrect(checkName);
     setIsCodeCorrect(checkCode);
     if (checkName() && checkCode()) {
-      const loader = document.querySelector("." + loaderStyles.loaderOff);
+      const loader = document.querySelector(".loaderOff");
       loader.classList.add(loaderStyles.loaderOn);
       const handler = function () {
         dispatch(
@@ -79,7 +79,7 @@ export function Form() {
       };
       setTimeout(handler, 2000);
       setTimeout(() => {
-        const loader = document.querySelector("." + loaderStyles.loaderOff);
+        const loader = document.querySelector(".loaderOff");
         loader.classList.remove(loaderStyles.loaderOn);
       }, 2000);
       handleCloseModal();

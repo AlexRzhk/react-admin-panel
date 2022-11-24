@@ -66,7 +66,7 @@ export function MainFilter({
         <Button onClick={handleResetAllFilters}>Сбросить фильтры</Button>
       </div>
       <div>
-        <Button icon="refresh" iconClassName={styles.loaderOff}>
+        <Button icon="refresh" iconClassName={"loaderOff"}>
           Загрузка
         </Button>
       </div>

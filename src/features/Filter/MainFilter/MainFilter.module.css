@@ -14,8 +14,6 @@
   gap: 1rem;
 }
 
-.loaderOff {
-}
 .loaderOn {
   animation: 1s linear infinite loaderOn;
 }
