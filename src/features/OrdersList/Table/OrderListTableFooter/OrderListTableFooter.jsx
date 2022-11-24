@@ -35,13 +35,18 @@ export function OrderListTableFooter({ ordersLength }) {
   };
 
   const deleteElements = (
-    <Button icon="bin" size="short" isDanger={true}>
+    <Button icon="bin" size="short" isDanger={true} className={styles.button}>
       Удалить
     </Button>
   );
 
   const elementChooseStatus = (
-    <Button icon="pencil" isSecondary={true} size="short">
+    <Button
+      icon="pencil"
+      isSecondary={true}
+      size="short"
+      className={styles.button}
+    >
       Изменить статус
     </Button>
   );
