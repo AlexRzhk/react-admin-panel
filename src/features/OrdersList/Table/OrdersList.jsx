@@ -14,7 +14,7 @@ import {
   getFilteredOrdersByPageAndAllOrdersLength,
 } from "../../store/selectors";
 
-import { getOrders, toggleOrderCheck } from "../../store/orders/ordersSlice";
+import { getOrders, toggleOrderCheck } from "../../store/Orders/OrdersSlice";
 import { Form } from "../../Form/Form";
 
 export function OrdersList() {

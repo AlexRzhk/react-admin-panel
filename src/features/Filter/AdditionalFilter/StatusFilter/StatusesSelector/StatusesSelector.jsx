@@ -1,7 +1,7 @@
 import { Checkbox } from "../../../../../elements/Checkbox/Checkbox.jsx";
 import styles from "./StatusesSelector.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleStatusCheck } from "../../../../store/filters/filtersSlice";
+import { toggleStatusCheck } from "../../../../store/Filters/FiltersSlice";
 import { getCheckedStatuses } from "../../../../store/selectors";
 import { statusNames } from "../../../../../App";
 

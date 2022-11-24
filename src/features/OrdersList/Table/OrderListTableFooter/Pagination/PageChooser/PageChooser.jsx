@@ -3,8 +3,8 @@ import { number } from "prop-types";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeCurrentPage } from "../../../../../store/filters/filtersSlice";
-import { resetCheckedOrders } from "../../../../../store/orders/ordersSlice";
+import { changeCurrentPage } from "../../../../../store/Filters/FiltersSlice";
+import { resetCheckedOrders } from "../../../../../store/Orders/OrdersSlice";
 
 PageChooser.propTypes = {
   maxPage: number,

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeFilterDateFromValue,
   changeFilterDateToValue,
-} from "../../../store/filters/filtersSlice";
+} from "../../../store/Filters/FiltersSlice";
 DateFilter.propTypes = {
   className: string,
 };

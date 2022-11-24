@@ -1,6 +1,6 @@
-import orders from "./orders/ordersSlice";
-import filters from "./filters/filtersSlice";
-import modal from "./form/formSlice";
+import orders from "./Orders/OrdersSlice";
+import filters from "./Filters/FiltersSlice";
+import modal from "./Form/FormSlice";
 
 const { combineReducers } = require("@reduxjs/toolkit");
 
