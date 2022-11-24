@@ -1,8 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
-  isModalFormActive: false,
-  order: {},
+  order: "",
 
   confirmationCodeValue: "",
 };
@@ -14,7 +13,7 @@ const formSlice = createSlice({
     openModal(state, action) {
       return {
         ...state,
-        isModalFormActive: true,
+
         order: { ...action.payload.order },
       };
     },

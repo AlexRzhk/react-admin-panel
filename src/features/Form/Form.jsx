@@ -32,9 +32,7 @@ export function Form() {
     setIsApproveDropdownVisible(!isApproveDropdownVisible);
   };
 
-  const { isModalFormActive, order, confirmationCodeValue } = useSelector(
-    (state) => state.modal
-  );
+  const { order, confirmationCodeValue } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
   const createHandleValueChanger =
@@ -131,21 +129,23 @@ export function Form() {
     <div className={styles._}>
       <div
         className={cn(styles.modalBackground, {
-          [styles.active]: isModalFormActive,
+          [styles.active]: !!order,
         })}
       />
 
-      <div
-        className={cn(styles.modalForm, { [styles.active]: isModalFormActive })}
-      >
+      <div className={cn(styles.modalForm, { [styles.active]: !!order })}>
         <div className={styles.header}>
-          Заявка #{order.id}
+          Заявка #{order && order.id}
           {dropdownApproveChangeElement}
         </div>
         <div className={styles.body}>
-          <Input disabled value={order.data} label="Дата и время заказа" />
           <Input
-            value={order.fullName}
+            disabled
+            value={order && order.data}
+            label="Дата и время заказа"
+          />
+          <Input
+            value={order && order.fullName}
             onChange={createHandleValueChanger("fullName", () => {
               setIsNameCorrect(true);
             })}
@@ -154,10 +154,14 @@ export function Form() {
             isIncorrect={!isNameCorrect}
           />
           <OrderDetail />
-          <Input disabled value={order.loyalty} label="Уровень лояльности" />
+          <Input
+            disabled
+            value={order && order.loyalty}
+            label="Уровень лояльности"
+          />
 
           <Input
-            value={statusNames[order.status]}
+            value={statusNames[order && order.status]}
             readOnly
             label="Статус заказа"
             postfix={dropdownSelectorElement}
