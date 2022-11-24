@@ -5,6 +5,11 @@ import {
 } from "../../../../store/Orders/OrdersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./StatusChooser.module.css";
+import { func } from "prop-types";
+
+StatusChooser.propTypes = {
+  close: func,
+};
 
 export function StatusChooser() {
   const statuses = Object.keys(statusNames);

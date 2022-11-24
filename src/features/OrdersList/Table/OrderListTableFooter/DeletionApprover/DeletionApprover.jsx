@@ -1,25 +1,28 @@
 import { Button } from "../../../../../elements/Button/Button";
-import { number, string } from "prop-types";
+import { func, number, string } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteOrders,
   resetCheckedOrders,
 } from "../../../../store/Orders/OrdersSlice";
-import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
 
 DeletionApprover.propTypes = {
   numberOfCheckedOrders: number,
   textClassName: string,
+  close: func,
 };
 
-export function DeletionApprover({ numberOfCheckedOrders, textClassName }) {
+export function DeletionApprover({
+  numberOfCheckedOrders,
+  textClassName,
+  close,
+}) {
   const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
   const dispatch = useDispatch();
 
   const handleDeleteChosenOrders = () => {
     dispatch(deleteOrders(checkedOrders));
     dispatch(resetCheckedOrders());
-    dispatch(changeCurrentPage(1));
   };
 
   let question = getRightQuestion(numberOfCheckedOrders);
@@ -30,7 +33,7 @@ export function DeletionApprover({ numberOfCheckedOrders, textClassName }) {
       <Button size="short" isFullWidth onClick={handleDeleteChosenOrders}>
         Удалить
       </Button>
-      <Button size="short" isSecondary={true} isFullWidth>
+      <Button size="short" isSecondary={true} isFullWidth onClick={close}>
         Отмена
       </Button>
     </>

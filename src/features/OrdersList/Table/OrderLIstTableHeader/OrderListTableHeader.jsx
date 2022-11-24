@@ -13,7 +13,10 @@ import {
   changeSorterDirection,
 } from "../../../store/Filters/FiltersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { checkAllOrdersOnPage } from "../../../store/Orders/OrdersSlice";
+import {
+  checkAllOrdersOnPage,
+  resetCheckedOrders,
+} from "../../../store/Orders/OrdersSlice";
 
 OrderListTableHeader.propTypes = {
   allOrdersOnPage: array,
@@ -31,6 +34,7 @@ export function OrderListTableHeader({ allOrdersOnPage }) {
     } else {
       dispatch(changeActiveSorter(sorter));
     }
+    dispatch(resetCheckedOrders());
   };
 
   const allOrdersIdOnPage = allOrdersOnPage.map((el) => el.id);

@@ -79,7 +79,6 @@ export function Form() {
       };
       setTimeout(handler, 2000);
       setTimeout(() => {
-        console.log("cancel");
         const loader = document.querySelector("." + loaderStyles.loaderOff);
         loader.classList.remove(loaderStyles.loaderOn);
       }, 2000);

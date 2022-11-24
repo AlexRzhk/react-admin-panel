@@ -65,8 +65,8 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
   if (searchbar) {
     filteredOrders = filteredOrders.filter((order) => {
       return (
-        order.fullName.toLowerCase().includes(searchbar.toLowerCase()) ||
-        String(order.id).includes(searchbar)
+        order.fullName.toLowerCase().includes(searchbar.toLowerCase().trim()) ||
+        String(order.id).includes(searchbar.trim())
       );
     });
   }
@@ -107,7 +107,6 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
     filteredOrders
   );
 
-  console.log("slice");
   const ordersByPage = filteredAndSorted.slice(
     pageLimit * (currentPage - 1),
     pageLimit * currentPage

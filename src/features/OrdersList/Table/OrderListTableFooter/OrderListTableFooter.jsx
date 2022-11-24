@@ -30,6 +30,10 @@ export function OrderListTableFooter({ ordersLength }) {
     setIsDeleteDropdownVisible(!isDeleteDropdownVisible);
     setIsStatusChangeDropdownVisible(false);
   };
+  const closeDeleteDropdown = () => {
+    setIsDeleteDropdownVisible(false);
+  };
+
   const deleteElements = (
     <Button icon="bin" size="short" isDanger={true}>
       Удалить
@@ -67,6 +71,7 @@ export function OrderListTableFooter({ ordersLength }) {
           <DeletionApprover
             numberOfCheckedOrders={numberOfCheckedOrders}
             textClassName={styles.text}
+            close={closeDeleteDropdown}
           />
         </MyDropdown>
       </div>

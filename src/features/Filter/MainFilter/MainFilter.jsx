@@ -6,6 +6,7 @@ import styles from "./MainFilter.module.css";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeCurrentPage,
   changeSearchbar,
   resetAllFilters,
 } from "../../store/Filters/FiltersSlice";
@@ -28,8 +29,9 @@ export function MainFilter({
   const searchbarValue = useSelector(getSearchbarValue);
 
   const handleChangeSearchbar = ({ target: { value } }) => {
-    dispatch(changeSearchbar(value.trim()));
+    dispatch(changeSearchbar(value));
     dispatch(resetCheckedOrders());
+    dispatch(changeCurrentPage(1));
   };
 
   const handleResetValue = () => {
@@ -38,6 +40,7 @@ export function MainFilter({
 
   const handleResetAllFilters = () => {
     dispatch(resetAllFilters());
+    dispatch(resetCheckedOrders());
   };
 
   let componentStyles = cn(styles._, className);
