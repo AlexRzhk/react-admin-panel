@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./StatusSelectorByModal.module.css";
 
 import { func } from "prop-types";
-import { changeModalValue } from "../../store/Form/FormSlice";
+import { changeModalValue } from "../../store/form/formSlice";
 
 StatusSelectorByModal.propTypes = {
   onDropdownClose: func,

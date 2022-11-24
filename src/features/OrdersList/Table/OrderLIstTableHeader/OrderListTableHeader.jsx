@@ -11,12 +11,12 @@ import { array } from "prop-types";
 import {
   changeActiveSorter,
   changeSorterDirection,
-} from "../../../store/Filters/FiltersSlice";
+} from "../../../store/filters/filtersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   checkAllOrdersOnPage,
   resetCheckedOrders,
-} from "../../../store/Orders/OrdersSlice";
+} from "../../../store/orders/ordersSlice";
 
 OrderListTableHeader.propTypes = {
   allOrdersOnPage: array,

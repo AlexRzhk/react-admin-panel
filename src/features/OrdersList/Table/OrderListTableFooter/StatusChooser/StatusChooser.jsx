@@ -2,7 +2,7 @@ import { statusNames } from "../../../../../App";
 import {
   changeOrders,
   resetCheckedOrders,
-} from "../../../../store/Orders/OrdersSlice";
+} from "../../../../store/orders/ordersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./StatusChooser.module.css";
 import { func } from "prop-types";

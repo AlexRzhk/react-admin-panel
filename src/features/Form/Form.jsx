@@ -3,8 +3,8 @@ import styles from "./Form.module.css";
 import dropdownCloseApproverStyle from "./DropdownCloseApprover/DropdownCloseApprover.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeModalValue, closeModal } from "../store/Form/FormSlice";
-import { changeOrder } from "../store/Orders/OrdersSlice";
+import { changeModalValue, closeModal } from "../store/form/formSlice";
+import { changeOrder } from "../store/orders/ordersSlice";
 import { Button } from "../../elements/Button/Button";
 import { MyDropdown } from "../../elements/Dropdown/MyDropdown";
 import { StatusSelectorByModal } from "./StatusSelectorByModal/StatusSelectorByModal";
@@ -22,6 +22,7 @@ export function Form() {
     useState(false);
   const [isCodeCorrect, setIsCodeCorrect] = useState(true);
   const [isNameCorrect, setIsNameCorrect] = useState(true);
+  const [isDataChanged, setIsDataChanged] = useState(false);
 
   const handleToggleSelectorVisibility = () => {
     setIsSelectorDropdownVisible(!isSelectorDropdownVisible);
@@ -29,7 +30,11 @@ export function Form() {
   const [isApproveDropdownVisible, setIsApproveDropdownVisible] =
     useState(false);
   const handleToggleApproverVisibility = () => {
-    setIsApproveDropdownVisible(!isApproveDropdownVisible);
+    if (isDataChanged) {
+      setIsApproveDropdownVisible(!isApproveDropdownVisible);
+    } else {
+      handleCloseModal();
+    }
   };
 
   const { order, confirmationCodeValue } = useSelector((state) => state.modal);
@@ -42,15 +47,18 @@ export function Form() {
         additionalReset();
       }
       dispatch(changeModalValue({ valueName, newValue: value }));
+      setIsDataChanged(true);
     };
 
   const createHandleValueReset = (valueName) => () => {
     dispatch(changeModalValue({ valueName, newValue: "" }));
+    setIsDataChanged(true);
   };
 
   const handleCloseModal = () => {
     dispatch(closeModal());
     setIsApproveDropdownVisible(false);
+    setIsDataChanged(false);
   };
 
   const checkName = () => {

@@ -6,7 +6,7 @@ import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
 import { number } from "prop-types";
 import { Pagination } from "./Pagination/Pagination";
 import { useSelector } from "react-redux";
-import { getCheckedOrdersIDLength } from "../../../store/Selectors/Selectors";
+import { getCheckedOrdersIDLength } from "../../../store/selectors";
 import { StatusChooser } from "./StatusChooser/StatusChooser";
 import cn from "classnames";
 import { useState } from "react";

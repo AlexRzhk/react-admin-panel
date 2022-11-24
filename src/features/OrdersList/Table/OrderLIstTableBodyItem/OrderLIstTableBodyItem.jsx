@@ -7,10 +7,10 @@ import { Checkbox } from "../../../../elements/Checkbox/Checkbox";
 import { TableRow } from "../../../../elements/Table/TableRow/TableRow";
 
 import { string, number, func, bool, any } from "prop-types";
-import { openModal } from "../../../store/Form/FormSlice";
+import { openModal } from "../../../store/form/formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import checkboxStyle from "../../../../elements/Checkbox/Checkbox.module.css";
-import { getOrderByID } from "../../../store/Selectors/Selectors";
+import { getOrderByID } from "../../../store/selectors";
 
 OrderListTableBodyItem.propTypes = {
   isChecked: bool,

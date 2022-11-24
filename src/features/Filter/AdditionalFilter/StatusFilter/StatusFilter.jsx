@@ -7,7 +7,7 @@ import { Button } from "../../../../elements/Button/Button";
 import { StatusesSelector } from "./StatusesSelector/StatusesSelector";
 import { statusNames } from "../../../../App";
 import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
-import { getCheckedStatuses } from "../../../store/Selectors/Selectors";
+import { getCheckedStatuses } from "../../../store/selectors";
 import { useSelector } from "react-redux";
 StatusFilterContainer.propTypes = {
   className: string,

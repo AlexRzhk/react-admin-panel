@@ -12,9 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCheckedOrdersID,
   getFilteredOrdersByPageAndAllOrdersLength,
-} from "../../store/Selectors/Selectors";
+} from "../../store/selectors";
 
-import { getOrders, toggleOrderCheck } from "../../store/Orders/OrdersSlice";
+import { getOrders, toggleOrderCheck } from "../../store/orders/ordersSlice";
 import { Form } from "../../Form/Form";
 
 export function OrdersList() {

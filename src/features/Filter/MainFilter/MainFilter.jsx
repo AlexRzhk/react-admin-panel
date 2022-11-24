@@ -9,9 +9,9 @@ import {
   changeCurrentPage,
   changeSearchbar,
   resetAllFilters,
-} from "../../store/Filters/FiltersSlice";
-import { resetCheckedOrders } from "../../store/Orders/OrdersSlice";
-import { getSearchbarValue } from "../../store/Selectors/Selectors";
+} from "../../store/filters/filtersSlice";
+import { resetCheckedOrders } from "../../store/orders/ordersSlice";
+import { getSearchbarValue } from "../../store/selectors";
 
 MainFilter.propTypes = {
   className: string,
