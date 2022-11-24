@@ -73,13 +73,21 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
 
   if (isAdditionalFiltersActive) {
     if (curFilterSumFromValue) {
-      filteredOrders = filteredOrders.filter(
-        (order) => +order.sum >= +curFilterSumFromValue
-      );
+      filteredOrders = filteredOrders.filter((order) => {
+        if (order.sum !== "-") {
+          return +order.sum >= +curFilterSumFromValue;
+        }
+        return 0 >= +curFilterSumFromValue;
+      });
     }
     if (curFilterSumToValue) {
       filteredOrders = filteredOrders.filter((order) => {
-        return +order.sum <= +curFilterSumToValue;
+        {
+          if (order.sum !== "-") {
+            return +order.sum <= +curFilterSumToValue;
+          }
+          return 0 <= +curFilterSumToValue;
+        }
       });
     }
 
