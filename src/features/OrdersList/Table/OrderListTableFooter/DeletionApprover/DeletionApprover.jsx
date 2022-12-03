@@ -5,6 +5,7 @@ import {
   deleteOrders,
   resetCheckedOrders,
 } from "../../../../store/Orders/OrdersSlice";
+import styles from "./DeletionApprover.module.css";
 
 DeletionApprover.propTypes = {
   numberOfCheckedOrders: number,
@@ -31,10 +32,21 @@ export function DeletionApprover({
   return (
     <>
       <span className={textClassName}>{question}</span>
-      <Button size="short" isFullWidth onClick={handleDeleteChosenOrders}>
+      <Button
+        size="short"
+        isFullWidth
+        onClick={handleDeleteChosenOrders}
+        className={styles.button}
+      >
         Удалить
       </Button>
-      <Button size="short" isSecondary={true} isFullWidth onClick={close}>
+      <Button
+        size="short"
+        isSecondary={true}
+        isFullWidth
+        onClick={close}
+        className={styles.button}
+      >
         Отмена
       </Button>
     </>

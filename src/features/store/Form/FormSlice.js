@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const formSlice = createSlice({
-  name: "modalForm",
+  name: "form",
   initialState,
   reducers: {
     openModal(state, action) {

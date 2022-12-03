@@ -49,16 +49,11 @@ const ordersSlice = createSlice({
       return { ...state, checkedOrdersID: action.payload };
     },
     changeOrder(state, action) {
-      const newOrders = state.allOrders.map((order) =>
-        order.id === action.payload.id
-          ? {
-              ...order,
-              status: action.payload.status,
-              fullName: action.payload.fullName,
-            }
-          : order
+      const changingOrder = state.allOrders.find(
+        (order) => order.id === action.payload.id
       );
-      return { ...state, allOrders: newOrders };
+      changingOrder.status = action.payload.status;
+      changingOrder.fullName = action.payload.fullName;
     },
     setFormOrder(state, action) {
       return { ...state, formChangeOrder: action.payload.order };

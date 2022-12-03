@@ -40,9 +40,8 @@ const sortByKey = (key, isAscending, array) => {
 
 export const getOrderByID = (id) => {
   return (state) => {
-    let orders = [...state.orders.allOrders];
-    orders = orders.filter((order) => order.id === id);
-    return orders[0];
+    let orders = state.orders.allOrders;
+    return orders.find((order) => order.id === id);
   };
 };
 

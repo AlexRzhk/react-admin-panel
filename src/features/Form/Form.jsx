@@ -69,8 +69,8 @@ export function Form() {
   };
 
   const handleChangeOrder = () => {
-    setIsNameCorrect(checkName);
-    setIsCodeCorrect(checkCode);
+    setIsNameCorrect(checkName());
+    setIsCodeCorrect(checkCode());
     if (checkName() && checkCode()) {
       const loader = document.querySelector(".loaderOff");
       loader.classList.add(loaderStyles.loaderOn);

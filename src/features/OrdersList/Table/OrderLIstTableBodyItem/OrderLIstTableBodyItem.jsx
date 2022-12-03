@@ -41,8 +41,8 @@ export function OrderListTableBodyItem({
   const order = useSelector(getOrderByID(id));
 
   return (
-    <div
-      className={styles.withoutCheckbox}
+    <TableRow
+      className={cn(styles.bodyRow, { [styles.checked]: isChecked })}
       onClick={(event) => {
         if (
           !(
@@ -55,30 +55,28 @@ export function OrderListTableBodyItem({
         }
       }}
     >
-      <TableRow className={cn(styles.bodyRow, { [styles.checked]: isChecked })}>
-        <TableCell className={rowStyles.checkbox}>
-          <Checkbox checked={isChecked} onChange={onChangeCheck} />
-        </TableCell>
+      <TableCell className={rowStyles.checkbox}>
+        <Checkbox checked={isChecked} onChange={onChangeCheck} />
+      </TableCell>
 
-        <TableCell className={rowStyles.index}>{id}</TableCell>
+      <TableCell className={rowStyles.index}>{id}</TableCell>
 
-        <TableCell className={rowStyles.date}>{data}</TableCell>
+      <TableCell className={rowStyles.date}>{data}</TableCell>
 
-        <TableCell className={rowStyles.status}>
-          <StatusCell status={status} />
-        </TableCell>
+      <TableCell className={rowStyles.status}>
+        <StatusCell status={status} />
+      </TableCell>
 
-        <TableCell className={rowStyles.numberOfPositions}>
-          {positionCount}
-        </TableCell>
+      <TableCell className={rowStyles.numberOfPositions}>
+        {positionCount}
+      </TableCell>
 
-        <TableCell className={rowStyles.sum}>
-          {status === "canceled" ? sum : sum.toLocaleString("ru")}
-          {status !== "canceled" && RUB_SYMBOL}
-        </TableCell>
+      <TableCell className={rowStyles.sum}>
+        {status === "canceled" ? sum : sum.toLocaleString("ru")}
+        {sum !== "-" && RUB_SYMBOL}
+      </TableCell>
 
-        <TableCell className={rowStyles.name}>{fullName}</TableCell>
-      </TableRow>
-    </div>
+      <TableCell className={rowStyles.name}>{fullName}</TableCell>
+    </TableRow>
   );
 }
