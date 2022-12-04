@@ -3,7 +3,7 @@ import styles from "./Form.module.css";
 import dropdownCloseApproverStyle from "./DropdownCloseApprover/DropdownCloseApprover.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeModalValue, closeModal } from "../store/Form/FormSlice";
+import { changeValue, finalize } from "../store/Form/FormSlice";
 import { changeOrder } from "../store/Orders/OrdersSlice";
 import { Button } from "../../elements/Button/Button";
 import { MyDropdown } from "../../elements/Dropdown/MyDropdown";
@@ -46,17 +46,17 @@ export function Form() {
       if (additionalReset) {
         additionalReset();
       }
-      dispatch(changeModalValue({ valueName, newValue: value }));
+      dispatch(changeValue({ valueName, newValue: value }));
       setIsDataChanged(true);
     };
 
   const createHandleValueReset = (valueName) => () => {
-    dispatch(changeModalValue({ valueName, newValue: "" }));
+    dispatch(changeValue({ valueName, newValue: "" }));
     setIsDataChanged(true);
   };
 
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    dispatch(finalize());
     setIsApproveDropdownVisible(false);
     setIsDataChanged(false);
   };

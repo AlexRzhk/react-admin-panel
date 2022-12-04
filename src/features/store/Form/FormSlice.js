@@ -1,4 +1,4 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   order: "",
@@ -10,17 +10,17 @@ const formSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    openModal(state, action) {
+    initialize(state, action) {
       return {
         ...state,
 
         order: { ...action.payload.order },
       };
     },
-    closeModal() {
+    finalize() {
       return { ...initialState };
     },
-    changeModalValue(state, action) {
+    changeValue(state, action) {
       if (action.payload.valueName in state.order) {
         return {
           ...state,
@@ -35,5 +35,5 @@ const formSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal, changeModalValue } = formSlice.actions;
+export const { initialize, finalize, changeValue } = formSlice.actions;
 export default formSlice.reducer;

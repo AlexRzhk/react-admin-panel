@@ -7,7 +7,7 @@ import { Checkbox } from "../../../../elements/Checkbox/Checkbox";
 import { TableRow } from "../../../../elements/Table/TableRow/TableRow";
 
 import { string, number, func, bool, any } from "prop-types";
-import { openModal } from "../../../store/Form/FormSlice";
+import { initialize } from "../../../store/Form/FormSlice";
 import { useDispatch, useSelector } from "react-redux";
 import checkboxStyle from "../../../../elements/Checkbox/Checkbox.module.css";
 import { getOrderByID } from "../../../store/selectors";
@@ -36,7 +36,7 @@ export function OrderListTableBodyItem({
   const RUB_SYMBOL = <span>&#8381;</span>;
   const dispatch = useDispatch();
   const handleOpenModal = (order) => {
-    dispatch(openModal(order));
+    dispatch(initialize(order));
   };
   const order = useSelector(getOrderByID(id));
 
