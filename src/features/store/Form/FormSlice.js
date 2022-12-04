@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  order: "",
+  id: "",
+  date: "",
+  status: "",
+  positionCount: "",
+  positions: "",
+  loyalty: "",
+  sum: "",
+  fullName: "",
 
   confirmationCodeValue: "",
 };
@@ -14,22 +21,20 @@ const formSlice = createSlice({
       return {
         ...state,
 
-        order: { ...action.payload.order },
+        id: action.payload.order.id,
+        date: action.payload.order.data,
+        status: action.payload.order.status,
+        positionCount: action.payload.order.positionCount,
+        positions: action.payload.order.positions,
+        loyalty: action.payload.order.loyalty,
+        sum: action.payload.order.sum,
+        fullName: action.payload.order.fullName,
       };
     },
     finalize() {
       return { ...initialState };
     },
     changeValue(state, action) {
-      if (action.payload.valueName in state.order) {
-        return {
-          ...state,
-          order: {
-            ...state.order,
-            [action.payload.valueName]: action.payload.newValue,
-          },
-        };
-      }
       return { ...state, [action.payload.valueName]: action.payload.newValue };
     },
   },

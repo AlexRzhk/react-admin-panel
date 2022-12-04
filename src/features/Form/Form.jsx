@@ -37,7 +37,8 @@ export function Form() {
     }
   };
 
-  const { order, confirmationCodeValue } = useSelector((state) => state.modal);
+  const { confirmationCodeValue, id, date, status, loyalty, fullName } =
+    useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
   const createHandleValueChanger =
@@ -62,24 +63,24 @@ export function Form() {
   };
 
   const checkName = () => {
-    return order.fullName && !(order.fullName.trim() === "");
+    return fullName.trim() === "";
   };
   const checkCode = () => {
     return confirmationCodeValue === confirmationCode;
   };
 
   const handleChangeOrder = () => {
-    setIsNameCorrect(checkName());
+    setIsNameCorrect(!checkName());
     setIsCodeCorrect(checkCode());
-    if (checkName() && checkCode()) {
+    if (!checkName() && checkCode()) {
       const loader = document.querySelector(".loaderOff");
       loader.classList.add(loaderStyles.loaderOn);
       const handler = function () {
         dispatch(
           changeOrder({
-            id: order.id,
-            status: order.status,
-            fullName: order.fullName,
+            id: id,
+            status: status,
+            fullName: fullName,
           })
         );
       };
@@ -91,16 +92,18 @@ export function Form() {
       handleCloseModal();
     }
   };
+  const validate = function () {
+    const errors = [];
+    if (!isNameCorrect) {
+      errors.push("поле ФИО заполнено неверно");
+    }
+    if (!isCodeCorrect) {
+      errors.push("поле код заполнено неверно");
+    }
+    return errors[0] ? errors[0] : "";
+  };
 
-  const errors = [];
-  if (!isNameCorrect) {
-    errors.push("поле ФИО заполнено неверно");
-  }
-  if (!isCodeCorrect) {
-    errors.push("поле код заполнено неверно");
-  }
-
-  const errorMessage = errors[0] ? errors[0] : "";
+  const errorMessage = validate();
 
   const triggerSelectorElement = <Button icon="arrow" />;
 
@@ -137,23 +140,19 @@ export function Form() {
     <div className={styles._}>
       <div
         className={cn(styles.modalBackground, {
-          [styles.active]: !!order,
+          [styles.active]: !!id,
         })}
       />
 
-      <div className={cn(styles.modalForm, { [styles.active]: !!order })}>
+      <div className={cn(styles.modalForm, { [styles.active]: !!id })}>
         <div className={styles.header}>
-          Заявка #{order && order.id}
+          Заявка #{id}
           {dropdownApproveChangeElement}
         </div>
         <div className={styles.body}>
+          <Input disabled value={date} label="Дата и время заказа" />
           <Input
-            disabled
-            value={order && order.data}
-            label="Дата и время заказа"
-          />
-          <Input
-            value={order && order.fullName}
+            value={fullName}
             onChange={createHandleValueChanger("fullName", () => {
               setIsNameCorrect(true);
             })}
@@ -162,14 +161,10 @@ export function Form() {
             isIncorrect={!isNameCorrect}
           />
           <OrderDetail />
-          <Input
-            disabled
-            value={order && order.loyalty}
-            label="Уровень лояльности"
-          />
+          <Input disabled value={loyalty} label="Уровень лояльности" />
 
           <Input
-            value={statusNames[order && order.status]}
+            value={statusNames[status]}
             readOnly
             label="Статус заказа"
             postfix={dropdownSelectorElement}

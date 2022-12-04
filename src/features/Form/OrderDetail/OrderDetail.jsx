@@ -9,30 +9,29 @@ import { TableFooter } from "../../../elements/Table/TableFooter/TableFooter";
 import { useSelector } from "react-redux";
 
 export function OrderDetail() {
-  const order = useSelector((state) => {
-    return state.modal.order;
+  const { positions, sum } = useSelector((state) => {
+    return state.modal;
   });
   let index = 0;
 
-  const elements =
-    order && order.positions ? (
-      order.positions?.map((position) => {
-        index++;
-        return (
-          <TableRow key={index} className={cn(styles.row, styles.bodyRow)}>
-            <TableCell className={styles.vendorCodeCell}>
-              {position.vendorCode}
-            </TableCell>
-            <TableCell className={styles.nameCell}>{position.name}</TableCell>
-            <TableCell className={styles.priceCell}>
-              {position.price} &#8381;
-            </TableCell>
-          </TableRow>
-        );
-      })
-    ) : (
-      <></>
-    );
+  const elements = positions ? (
+    positions?.map((position) => {
+      index++;
+      return (
+        <TableRow key={index} className={cn(styles.row, styles.bodyRow)}>
+          <TableCell className={styles.vendorCodeCell}>
+            {position.vendorCode}
+          </TableCell>
+          <TableCell className={styles.nameCell}>{position.name}</TableCell>
+          <TableCell className={styles.priceCell}>
+            {position.price} &#8381;
+          </TableCell>
+        </TableRow>
+      );
+    })
+  ) : (
+    <></>
+  );
 
   return (
     <Table className={styles._}>
@@ -45,7 +44,7 @@ export function OrderDetail() {
       </TableHeader>
       <TableBody className={styles.body}>{elements}</TableBody>
       <TableFooter className={styles.footer}>
-        Итоговая сумма: {order && order.sum} &#8381;
+        Итоговая сумма: {sum} &#8381;
       </TableFooter>
     </Table>
   );
