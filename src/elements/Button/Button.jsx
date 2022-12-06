@@ -16,6 +16,7 @@ Button.propTypes = {
   className: string,
   props: array,
   isDanger: bool,
+  iconClassName: string,
 };
 const noop = () => {};
 
@@ -30,6 +31,7 @@ export function Button({
   disabled = false,
   className = "",
   isDanger = false,
+  iconClassName = "",
   ...props
 }) {
   const buttonStyles = cn(styles._, className, {
@@ -49,7 +51,7 @@ export function Button({
       type={type}
       {...props}
     >
-      <Icon type={icon} />
+      <Icon type={icon} className={iconClassName} />
       {children}
     </button>
   );

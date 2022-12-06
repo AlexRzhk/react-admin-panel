@@ -1,10 +1,7 @@
-import { createContext } from "react";
 import "./App.css";
 import { OrdersList } from "./features/OrdersList/Table/OrdersList";
 import { Provider } from "react-redux";
 import store from "./features/index";
-
-export const FiltersContext = createContext("");
 
 export const statusNames = {
   new: "Новый",

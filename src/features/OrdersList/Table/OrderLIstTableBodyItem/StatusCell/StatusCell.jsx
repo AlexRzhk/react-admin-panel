@@ -48,6 +48,11 @@ export function StatusCell({ status }) {
     [styles.done]: status === "done",
     [styles.canceled]: status === "canceled",
   });
+  if (document.body.classList.contains("dark")) {
+    ICON_SETTINGS_MAP.canceled.iconColor = "white";
+  } else {
+    ICON_SETTINGS_MAP.canceled.iconColor = "black";
+  }
   return (
     <div className={componentStyles}>
       <Icon

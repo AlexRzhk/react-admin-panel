@@ -13,3 +13,15 @@
   align-items: center;
   gap: 1rem;
 }
+
+.loaderOn {
+  animation: 1s linear infinite loaderOn;
+}
+@keyframes loaderOn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

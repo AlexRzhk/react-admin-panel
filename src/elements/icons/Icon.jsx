@@ -32,7 +32,7 @@ export function Icon({ className = "", type, fill = "", stroke = "" }) {
           width="1rem"
           fill={fill}
           stroke={stroke}
-          className={cn(className)}
+          className={cn(className, styles.abort)}
         />
       );
     case "bin":
