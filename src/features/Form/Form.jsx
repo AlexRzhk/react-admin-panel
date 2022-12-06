@@ -4,7 +4,6 @@ import dropdownCloseApproverStyle from "./DropdownCloseApprover/DropdownCloseApp
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeValue, resetForm } from "../store/Form/formSlice";
-import { changeOrder } from "../store/Orders/ordersSlice";
 import { Button } from "../../elements/Button/Button";
 import { MyDropdown } from "../../elements/Dropdown/MyDropdown";
 import { StatusSelectorByModal } from "./StatusSelectorByModal/StatusSelectorByModal";
@@ -13,8 +12,8 @@ import cn from "classnames";
 import { Input } from "../../elements/Input/Input";
 import { OrderDetail } from "./OrderDetail/OrderDetail";
 import { statusNames } from "../../App";
-import loaderStyles from "../Filter/MainFilter/MainFilter.module.css";
 import { getFormData, getOrderByID } from "../store/selectors";
+import updateOrder from "./../store/Form/formAction";
 
 const confirmationCode = "123";
 
@@ -88,22 +87,13 @@ export function Form() {
   const handleChangeOrder = () => {
     const errors = validateErrors();
     if (!(errors.name || errors.code)) {
-      const loader = document.querySelector(".loaderOff");
-      loader.classList.add(loaderStyles.loaderOn);
-      const handler = function () {
-        dispatch(
-          changeOrder({
-            id: id,
-            status: status,
-            fullName: fullName,
-          })
-        );
-      };
-      setTimeout(handler, 2000);
-      setTimeout(() => {
-        const loader = document.querySelector(".loaderOff");
-        loader.classList.remove(loaderStyles.loaderOn);
-      }, 2000);
+      dispatch(
+        updateOrder({
+          id: id,
+          status: status,
+          fullName: fullName,
+        })
+      );
       handleCloseModal();
     }
   };

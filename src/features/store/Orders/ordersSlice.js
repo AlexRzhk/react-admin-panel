@@ -4,6 +4,7 @@ const initialState = {
   allOrders: [],
   checkedOrdersID: [],
   formChangeOrder: {},
+  isLoading: false,
 };
 
 const ordersSlice = createSlice({
@@ -43,6 +44,10 @@ const ordersSlice = createSlice({
     checkAllOrdersOnPage(state, action) {
       return { ...state, checkedOrdersID: action.payload };
     },
+    changeOrderSuccess(state, action) {
+      console.log(state);
+      console.log(action);
+    },
     changeOrder(state, action) {
       const changingOrder = state.allOrders.find(
         (order) => order.id === action.payload.id
@@ -50,6 +55,7 @@ const ordersSlice = createSlice({
       changingOrder.status = action.payload.status;
       changingOrder.fullName = action.payload.fullName;
     },
+
     setFormOrder(state, action) {
       return { ...state, formChangeOrder: action.payload.order };
     },

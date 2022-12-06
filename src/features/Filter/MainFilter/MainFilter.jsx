@@ -11,7 +11,7 @@ import {
   resetAllFilters,
 } from "../../store/Filters/filtersSlice";
 import { resetCheckedOrders } from "../../store/Orders/ordersSlice";
-import { getSearchbarValue } from "../../store/selectors";
+import { getLoadState, getSearchbarValue } from "../../store/selectors";
 
 MainFilter.propTypes = {
   className: string,
@@ -25,6 +25,7 @@ export function MainFilter({
   className,
 }) {
   const dispatch = useDispatch();
+  const { isLoading } = useSelector(getLoadState);
 
   const searchbarValue = useSelector(getSearchbarValue);
 
@@ -42,8 +43,8 @@ export function MainFilter({
     dispatch(resetAllFilters());
     dispatch(resetCheckedOrders());
   };
-
-  let componentStyles = cn(styles._, className);
+  const refreshIconStyles = cn({ [styles.loaderOn]: isLoading });
+  const componentStyles = cn(styles._, className);
   return (
     <div className={componentStyles}>
       <div className={styles.leftBlock}>
@@ -66,7 +67,7 @@ export function MainFilter({
         <Button onClick={handleResetAllFilters}>Сбросить фильтры</Button>
       </div>
       <div>
-        <Button icon="refresh" iconClassName={"loaderOff"}>
+        <Button icon="refresh" iconClassName={refreshIconStyles}>
           Загрузка
         </Button>
       </div>
