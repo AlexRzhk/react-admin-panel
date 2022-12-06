@@ -48,6 +48,7 @@ export function OrderListTableBodyItem({
           !(
             event.target.classList.contains(checkboxStyle.area) ||
             event.target.classList.contains(checkboxStyle.icon) ||
+            event.target.classList.contains(styles.label) ||
             event.target.classList.length === 0
           )
         ) {

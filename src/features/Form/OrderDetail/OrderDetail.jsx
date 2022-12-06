@@ -11,11 +11,9 @@ import { getFormData } from "../../store/selectors";
 
 export function OrderDetail() {
   const { positions, sum } = useSelector(getFormData);
-  let index = 0;
 
   const elements = positions
-    ? positions?.map((position) => {
-        index++;
+    ? positions?.map((position, index) => {
         return (
           <TableRow key={index} className={cn(styles.row, styles.bodyRow)}>
             <TableCell className={styles.vendorCodeCell}>
