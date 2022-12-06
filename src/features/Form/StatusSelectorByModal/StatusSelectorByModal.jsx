@@ -5,6 +5,7 @@ import styles from "./StatusSelectorByModal.module.css";
 
 import { func } from "prop-types";
 import { changeValue } from "../../store/Form/formSlice";
+import { getFormStatus } from "../../store/selectors";
 
 StatusSelectorByModal.propTypes = {
   onDropdownClose: func,
@@ -12,7 +13,7 @@ StatusSelectorByModal.propTypes = {
 
 export function StatusSelectorByModal({ onDropdownClose }) {
   const statuses = Object.keys(statusNames);
-  const modalStatus = useSelector((state) => state.form.status);
+  const modalStatus = useSelector(getFormStatus);
 
   const dispatch = useDispatch();
   const handleChangeModalStatus = (newStatus) => {

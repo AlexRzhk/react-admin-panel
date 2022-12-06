@@ -2,7 +2,7 @@ export const getCheckedStatuses = (state) => state.filters.checkedStatuses;
 export const getSearchbarValue = (state) => state.filters.searchbar;
 export const getFormData = (state) => state.form;
 export const getLoadState = (state) => state.loader;
-
+export const getFormStatus = (state) => state.form.status;
 export const getCheckedOrdersID = (state) => state.orders.checkedOrdersID;
 export const getCheckedOrdersIDLength = (state) =>
   state.orders.checkedOrdersID.length;
