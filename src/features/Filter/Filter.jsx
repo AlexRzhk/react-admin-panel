@@ -9,9 +9,9 @@ import { AdditionalFilter } from "./AdditionalFilter/AdditionalFilter.jsx";
 import cn from "classnames";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { activateAdditionalFilters } from "../store/Filters/FiltersSlice";
-import { changeCurrentPage } from "../store/Filters/FiltersSlice";
-import { resetCheckedOrders } from "../store/Orders/OrdersSlice";
+import { activateAdditionalFilters } from "../store/Filters/filtersSlice";
+import { changeCurrentPage } from "../store/Filters/filtersSlice";
+import { resetCheckedOrders } from "../store/Orders/ordersSlice";
 
 Filter.propTypes = {
   className: string,

@@ -7,31 +7,28 @@ import { TableCell } from "../../../elements/Table/TableCell/TableCell";
 import { TableBody } from "../../../elements/Table/TableBody/TableBody";
 import { TableFooter } from "../../../elements/Table/TableFooter/TableFooter";
 import { useSelector } from "react-redux";
+import { getFormData } from "../../store/selectors";
 
 export function OrderDetail() {
-  const { positions, sum } = useSelector((state) => {
-    return state.modal;
-  });
+  const { positions, sum } = useSelector(getFormData);
   let index = 0;
 
-  const elements = positions ? (
-    positions?.map((position) => {
-      index++;
-      return (
-        <TableRow key={index} className={cn(styles.row, styles.bodyRow)}>
-          <TableCell className={styles.vendorCodeCell}>
-            {position.vendorCode}
-          </TableCell>
-          <TableCell className={styles.nameCell}>{position.name}</TableCell>
-          <TableCell className={styles.priceCell}>
-            {position.price} &#8381;
-          </TableCell>
-        </TableRow>
-      );
-    })
-  ) : (
-    <></>
-  );
+  const elements = positions
+    ? positions?.map((position) => {
+        index++;
+        return (
+          <TableRow key={index} className={cn(styles.row, styles.bodyRow)}>
+            <TableCell className={styles.vendorCodeCell}>
+              {position.vendorCode}
+            </TableCell>
+            <TableCell className={styles.nameCell}>{position.name}</TableCell>
+            <TableCell className={styles.priceCell}>
+              {position.price} &#8381;
+            </TableCell>
+          </TableRow>
+        );
+      })
+    : null;
 
   return (
     <Table className={styles._}>

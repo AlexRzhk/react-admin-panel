@@ -1,13 +1,13 @@
-import orders from "./Orders/OrdersSlice";
-import filters from "./Filters/FiltersSlice";
-import modal from "./Form/FormSlice";
+import orders from "./Orders/ordersSlice";
+import filters from "./Filters/filtersSlice";
+import form from "./Form/formSlice";
 
-const { combineReducers } = require("@reduxjs/toolkit");
+import { combineReducers } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
   filters,
   orders,
-  modal,
+  form,
 });
 
 export default rootReducer;

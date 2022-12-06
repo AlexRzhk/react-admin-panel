@@ -1,10 +1,10 @@
 import dropdownSelectorStyles from "./StatusSelectorByModal/StatusSelectorByModal.module.css";
 import styles from "./Form.module.css";
 import dropdownCloseApproverStyle from "./DropdownCloseApprover/DropdownCloseApprover.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeValue, finalize } from "../store/Form/FormSlice";
-import { changeOrder } from "../store/Orders/OrdersSlice";
+import { changeValue, resetForm } from "../store/Form/formSlice";
+import { changeOrder } from "../store/Orders/ordersSlice";
 import { Button } from "../../elements/Button/Button";
 import { MyDropdown } from "../../elements/Dropdown/MyDropdown";
 import { StatusSelectorByModal } from "./StatusSelectorByModal/StatusSelectorByModal";
@@ -14,15 +14,59 @@ import { Input } from "../../elements/Input/Input";
 import { OrderDetail } from "./OrderDetail/OrderDetail";
 import { statusNames } from "../../App";
 import loaderStyles from "../Filter/MainFilter/MainFilter.module.css";
+import { getFormData, getOrderByID } from "../store/selectors";
 
 const confirmationCode = "123";
 
 export function Form() {
+  const { confirmationCodeValue, id, date, status, loyalty, fullName } =
+    useSelector(getFormData);
+
+  const order = useSelector(getOrderByID(id));
+  const checkDataChanged = () => {
+    return !(order?.status === status && order?.fullName === fullName);
+  };
+  const isDataChanged = checkDataChanged();
+
+  const [errors, setErrors] = useState({ code: "", name: "" });
+
   const [isSelectorDropdownVisible, setIsSelectorDropdownVisible] =
     useState(false);
-  const [isCodeCorrect, setIsCodeCorrect] = useState(true);
-  const [isNameCorrect, setIsNameCorrect] = useState(true);
-  const [isDataChanged, setIsDataChanged] = useState(false);
+
+  const validateErrors = () => {
+    const errors = { code: "", name: "" };
+    if (fullName.trim().length === 0) {
+      errors.name = "поле ФИО заполнено неверно";
+    }
+    if (confirmationCodeValue !== confirmationCode) {
+      errors.code = "поле код заполнено неверно";
+    }
+    console.log(errors);
+    setErrors(errors);
+    return errors;
+  };
+
+  useEffect(() => {
+    setErrors({ ...errors, name: "" });
+  }, [fullName]);
+  useEffect(() => {
+    setErrors({ ...errors, code: "" });
+  }, [confirmationCodeValue]);
+
+  const dispatch = useDispatch();
+  const createHandleValueChanger =
+    (valueName, additionalReset) =>
+    ({ target: { value } }) => {
+      if (additionalReset) {
+        additionalReset();
+      }
+      dispatch(changeValue({ valueName, newValue: value }));
+    };
+
+  const handleCloseModal = () => {
+    dispatch(resetForm());
+    setIsApproveDropdownVisible(false);
+  };
 
   const handleToggleSelectorVisibility = () => {
     setIsSelectorDropdownVisible(!isSelectorDropdownVisible);
@@ -37,42 +81,13 @@ export function Form() {
     }
   };
 
-  const { confirmationCodeValue, id, date, status, loyalty, fullName } =
-    useSelector((state) => state.modal);
-
-  const dispatch = useDispatch();
-  const createHandleValueChanger =
-    (valueName, additionalReset) =>
-    ({ target: { value } }) => {
-      if (additionalReset) {
-        additionalReset();
-      }
-      dispatch(changeValue({ valueName, newValue: value }));
-      setIsDataChanged(true);
-    };
-
   const createHandleValueReset = (valueName) => () => {
     dispatch(changeValue({ valueName, newValue: "" }));
-    setIsDataChanged(true);
-  };
-
-  const handleCloseModal = () => {
-    dispatch(finalize());
-    setIsApproveDropdownVisible(false);
-    setIsDataChanged(false);
-  };
-
-  const checkName = () => {
-    return fullName.trim() === "";
-  };
-  const checkCode = () => {
-    return confirmationCodeValue === confirmationCode;
   };
 
   const handleChangeOrder = () => {
-    setIsNameCorrect(!checkName());
-    setIsCodeCorrect(checkCode());
-    if (!checkName() && checkCode()) {
+    const errors = validateErrors();
+    if (!(errors.name || errors.code)) {
       const loader = document.querySelector(".loaderOff");
       loader.classList.add(loaderStyles.loaderOn);
       const handler = function () {
@@ -92,18 +107,6 @@ export function Form() {
       handleCloseModal();
     }
   };
-  const validate = function () {
-    const errors = [];
-    if (!isNameCorrect) {
-      errors.push("поле ФИО заполнено неверно");
-    }
-    if (!isCodeCorrect) {
-      errors.push("поле код заполнено неверно");
-    }
-    return errors[0] ? errors[0] : "";
-  };
-
-  const errorMessage = validate();
 
   const triggerSelectorElement = <Button icon="arrow" />;
 
@@ -153,12 +156,10 @@ export function Form() {
           <Input disabled value={date} label="Дата и время заказа" />
           <Input
             value={fullName}
-            onChange={createHandleValueChanger("fullName", () => {
-              setIsNameCorrect(true);
-            })}
+            onChange={createHandleValueChanger("fullName")}
             onReset={createHandleValueReset("fullName")}
             label="ФИО покупателя"
-            isIncorrect={!isNameCorrect}
+            isIncorrect={!!errors.name}
           />
           <OrderDetail />
           <Input disabled value={loyalty} label="Уровень лояльности" />
@@ -173,16 +174,14 @@ export function Form() {
           <Input
             label="Код подтверждения"
             value={confirmationCodeValue}
-            onChange={createHandleValueChanger("confirmationCodeValue", () => {
-              setIsCodeCorrect(true);
-            })}
+            onChange={createHandleValueChanger("confirmationCodeValue")}
             onReset={createHandleValueReset("confirmationCodeValue")}
-            isIncorrect={!isCodeCorrect > 0}
+            isIncorrect={!!errors.code}
           />
         </div>
 
         <div className={styles.footer}>
-          {errorMessage}
+          {errors.name || errors.code || " "}
           <Button
             icon="checkmark"
             isSecondary={true}

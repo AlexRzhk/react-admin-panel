@@ -1,16 +1,15 @@
 export const getCheckedStatuses = (state) => state.filters.checkedStatuses;
 export const getSearchbarValue = (state) => state.filters.searchbar;
+export const getFormData = (state) => state.form;
 
 export const getCheckedOrdersID = (state) => state.orders.checkedOrdersID;
 export const getCheckedOrdersIDLength = (state) =>
   state.orders.checkedOrdersID.length;
 
 const parseDate = (dateString) => {
-  let dateAndTime = dateString.split(",");
-  let month = dateAndTime[0].split(".")[1];
-  let day = dateAndTime[0].split(".")[0];
-  let year = dateAndTime[0].split(".")[2];
-  let date = new Date(+year, month - 1, +day);
+  const dateAndTime = dateString.split(",");
+  const [day, month, year] = dateAndTime[0].split(".").map((el) => +el);
+  const date = new Date(year, month - 1, day);
   return date;
 };
 
@@ -40,8 +39,9 @@ const sortByKey = (key, isAscending, array) => {
 
 export const getOrderByID = (id) => {
   return (state) => {
-    let orders = state.orders.allOrders;
-    return orders.find((order) => order.id === id);
+    return state.orders.allOrders.find((order) => {
+      return order.id === id;
+    });
   };
 };
 
@@ -60,7 +60,7 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
     currentPage,
   } = state.filters;
 
-  let filteredOrders = [...state.orders.allOrders];
+  let filteredOrders = state.orders.allOrders;
   if (searchbar) {
     filteredOrders = filteredOrders.filter((order) => {
       return (
@@ -108,11 +108,9 @@ export const getFilteredOrdersByPageAndAllOrdersLength = (state) => {
     }
   }
 
-  const filteredAndSorted = sortByKey(
-    activeSorter,
-    isAscending,
-    filteredOrders
-  );
+  const filteredAndSorted = sortByKey(activeSorter, isAscending, [
+    ...filteredOrders,
+  ]);
 
   const ordersByPage = filteredAndSorted.slice(
     pageLimit * (currentPage - 1),

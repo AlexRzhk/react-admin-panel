@@ -4,8 +4,8 @@ import { MyDropdown } from "../../../../../elements/Dropdown/MyDropdown";
 import { PageChooser } from "./PageChooser/PageChooser";
 import { number } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { changeCurrentPage } from "../../../../store/Filters/FiltersSlice";
-import { resetCheckedOrders } from "../../../../store/Orders/OrdersSlice";
+import { changeCurrentPage } from "../../../../store/Filters/filtersSlice";
+import { resetCheckedOrders } from "../../../../store/Orders/ordersSlice";
 
 Pagination.propTypes = {
   ordersLength: number,

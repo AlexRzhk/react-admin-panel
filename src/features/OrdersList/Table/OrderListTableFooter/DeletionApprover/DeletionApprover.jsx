@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteOrders,
   resetCheckedOrders,
-} from "../../../../store/Orders/OrdersSlice";
+} from "../../../../store/Orders/ordersSlice";
 import styles from "./DeletionApprover.module.css";
 
 DeletionApprover.propTypes = {
