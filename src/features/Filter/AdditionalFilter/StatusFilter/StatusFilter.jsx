@@ -1,15 +1,13 @@
-import { useContext } from "react";
 import styles from "./StatusFilter.module.css";
 import cn from "classnames";
 import statusSelectorStyles from "./StatusesSelector/StatusesSelector.module.css";
-
 import { string } from "prop-types";
 import { Input } from "../../../../elements/Input/Input";
 import { Button } from "../../../../elements/Button/Button";
 import { StatusesSelector } from "./StatusesSelector/StatusesSelector";
-import { FiltersContext, statusNames } from "../../../../App";
+import { statusNames } from "../../../../App";
 import { MyDropdown } from "../../../../elements/Dropdown/MyDropdown";
-import { getCheckedStatuses } from "../../../store/Selectors/Selectors";
+import { getCheckedStatuses } from "../../../store/selectors";
 import { useSelector } from "react-redux";
 StatusFilterContainer.propTypes = {
   className: string,
@@ -20,16 +18,8 @@ StatusFilter.propTypes = {
 };
 
 export function StatusFilterContainer({ className }) {
-  const { handleChangeStatusChoose, handleStatusChange } =
-    useContext(FiltersContext);
-
   const statuses = Object.keys(statusNames);
   const checkedStatuses = useSelector(getCheckedStatuses);
-
-  const statusChangeHandler = (status) => {
-    handleChangeStatusChoose(status);
-    handleStatusChange(status);
-  };
 
   let checkedValues = "";
   if (
@@ -45,15 +35,7 @@ export function StatusFilterContainer({ className }) {
     checkedValues = res;
   }
 
-  return (
-    <StatusFilter
-      className={className}
-      statusValues={statuses}
-      statusNames={statusNames}
-      handleChangeStatusValues={statusChangeHandler}
-      checkedValues={checkedValues}
-    />
-  );
+  return <StatusFilter className={className} checkedValues={checkedValues} />;
 }
 
 function StatusFilter({ className, checkedValues }) {

@@ -4,7 +4,7 @@ export function Radio() {
   return (
     <div className={styles._}>
       <label>
-        <input className={styles.area} type="radio" />
+        <input className={styles.iconArea} type="radio" />
         <svg
           className={styles.icon}
           viewBox="0 0 16 16"

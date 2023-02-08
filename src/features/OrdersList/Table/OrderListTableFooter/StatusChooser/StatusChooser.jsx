@@ -1,17 +1,27 @@
 import { statusNames } from "../../../../../App";
-import { changeOrders } from "../../../../store/Orders/OrdersSlice";
+import {
+  changeOrders,
+  resetCheckedOrders,
+} from "../../../../store/Orders/ordersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./StatusChooser.module.css";
+import { func } from "prop-types";
 
-export function StatusChooser() {
+StatusChooser.propTypes = {
+  externalVisibilitySetter: func,
+};
+
+export function StatusChooser({ externalVisibilitySetter }) {
   const statuses = Object.keys(statusNames);
 
-  const checkedOrders = useSelector((state) => state.filters.checkedOrdersId);
+  const checkedOrders = useSelector((state) => state.orders.checkedOrdersID);
 
   const dispatch = useDispatch();
 
   const handleChangeOrdersStatuses = (status) => {
+    dispatch(resetCheckedOrders());
     dispatch(changeOrders({ newStatus: status, checkedOrders }));
+    externalVisibilitySetter(false);
   };
 
   return (

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeFilterSumFromValue,
   changeFilterSumToValue,
-} from "../../../store/Filters/FiltersSlice";
+} from "../../../store/Filters/filtersSlice";
 SumFilter.propTypes = {
   className: string,
 };

@@ -1,6 +1,8 @@
 .checkbox {
   width: 2.15%;
   padding-left: 0.5rem;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .index {
